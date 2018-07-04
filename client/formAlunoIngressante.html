@@ -1,0 +1,175 @@
+<template name="formAlunoIngressante">
+  <table width="571" cellspacing="0" cellpadding="4" border="1">
+    <tbody>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p align="center"><label style="font-family: Arial, serif; font-size: medium;">INSTITUTO DE </label> <label style="color: #00b050; font-family: Arial, serif; font-size: medium;">ENGENHARIA</label></p>
+          <p align="center"><label style="color: #00b050; font-family: Arial, serif; font-size: medium;">COLEGIADO DO CURSO DE ENGENHARIA DE MINAS</label></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" bgcolor="#ffffff" width="561" height="18">
+          <p align="center"><label style="font-family: Arial, serif; font-size: medium;"><strong>Formul&aacute;rio para alunos ingressantes</strong></label></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #d0cece;" colspan="11" valign="top" bgcolor="#d0cece" width="561" height="15">
+          <p><label style="font-family: Arial, serif; font-size: medium;"><strong>Itens de preenchimento obrigat&oacute;rio:</strong></label></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #d0cece;" colspan="11" valign="top" bgcolor="#d0cece" width="561">
+          <p><label style="font-family: Arial, serif; font-size: medium;">N&uacute;mero de matr&iacute;cula:</label><input name="pergunta62" type="text"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Qual o seu g&ecirc;nero? </label><input name="pergunta63"  type="text"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Em que ano voc&ecirc; nasceu?</label><select name="pergunta64" id="pergunta64"></select></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Qual o seu estado de origem?</label><select name="pergunta65" id="pergunta65"></select></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Qual a cidade de origem? </label> <select name="pergunta66" id="pergunta66"></select></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Em que ano voc&ecirc; concluiu o ensino m&eacute;dio?</label> <select name="pergunta67" id="pergunta67"></select></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="font-family: Arial, serif; font-size: medium;">Engenharia de Minas &eacute; o curso que voc&ecirc; realmente gostaria de fazer? </label></p>
+            <p>
+              Sim<input type="radio" name="pergunta68" id="" value="1">
+            </p>
+            <p>
+              N&atilde;o<input type="radio" name="pergunta68" id="" value="2">
+            </p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Seu ensino m&eacute;dio foi: </label></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Profissionalizante </label><input type="radio" name="pergunta69"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Regular </label><input type="radio" name="pergunta69"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Supletivo </label> <input type="radio" name="pergunta69"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">T&eacute;cnico</label> <input type="radio" name="pergunta69"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Seu ensino m&eacute;dio foi cursado no per&iacute;odo: </label> <input type="radio" name="pergunta70"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Diurno </label><input type="radio" name="pergunta70"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Noturno </label><input type="radio" name="pergunt70"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Integral </label><input type="radio" name="pergunta70"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Misto (mais de um tipo)</label><input type="radio" name="pergunta70"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Seu ensino m&eacute;dio foi cursado em escola: </label><input type="radio" name="pergunta71"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">P&uacute;blica estadual </label><input type="radio" name="pergunta71"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">P&uacute;blica federal ou militar </label><input type="radio" name="pergunta71"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Privada </label><input type="radio" name="pergunta71"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Misto (Mais de um tipo) </label><input type="radio" name="pergunta71"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Outro</label><input type="radio" name="pergunta71"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Voc&ecirc; fez algum cursinho preparat&oacute;rio para o ENEM? </label></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Sim</label><input type="radio" name="pergunta72"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">N&atilde;o</label><input type="radio" name="pergunta72"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="font-family: Arial, serif; font-size: medium;">Voc&ecirc; trabalha?</label></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Sim, em tempo integral</label><input type="radio" name="pergunta72"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Sim, meio per&iacute;odo</label><input type="radio" name="pergunta72"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Sim, aos fins de semana</label><input type="radio" name="pergunta72"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Sim, esporadicamente</label><input type="radio" name="pergunta72"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">N&atilde;o trabalho atualmente, mas j&aacute; trabalhe</label><input type="radio" name="pergunta72"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">N&atilde;o trabalho atualmente, mas estou buscando emprego</label><input type="radio" name="pergunta72"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">N&atilde;o</label><input type="radio" name="pergunta71"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Como voc&ecirc; se considera?</label></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Branco </label><input type="radio" name="pergunta72" value="1"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Pardo;</label><input type="radio" name="pergunta72" value="2"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Mulato</label><input type="radio" name="pergunta72" value="3"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Negro</label><input type="radio" name="pergunta72" value="4"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Amarelo</label><input type="radio" name="pergunta72" value="5"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Ind&iacute;gena</label><input type="radio" name="pergunta72" value="6"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Outro</label><input type="radio" name="pergunta72" value="7"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Qual o seu estado civil?</label></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Solteiro</label><input type="radio" name="pergunta73" value="1"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Casado</label><input type="radio" name="pergunta73" value="2"></p>
+          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Outro</label><input type="radio" name="pergunta73" value="4"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" valign="top" bgcolor="#ffffff" width="374">
+          <p><label style="font-family: Arial, serif; font-size: medium;">Quantos vestibulares voc&ecirc; j&aacute; prestou? </label></p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="1"> 1</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="2"> 2</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="3"> 3</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+        <p align="center"><input type="radio" name="pergunta74" id="" value="4"> 4</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="5">5</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="6">6</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="7">7</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="8">8</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+        <p align="center"><input type="radio" name="pergunta74" id="" value="9">9</p>
+        </td>
+        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+          <p align="center"><input type="radio" name="pergunta74" id="" value="10">10</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="font-family: Arial, serif; font-size: medium;">Por que motivo voc&ecirc; escolheu o curso de Engenharia de Minas?</label></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Adequa&ccedil;&atilde;o &agrave;s aptid&otilde;es pessoais;</label><input type="radio" name="pergunta75" value="1"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Amplas possibilidades salariais;</label><input type="radio" name="pergunta75" value="1"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Atuar em &aacute;rea afim;</label><input type="radio" name="pergunta75" value="1"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Mercado de trabalho;</label><input type="radio" name="pergunta75" value="1"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Prest&iacute;gio social da profiss&atilde;o;</label><input type="radio" name="pergunta75" value="1"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Rela&ccedil;&atilde;o candidato/vaga;</label><input type="radio" name="pergunta75" value="1"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Outros.</label><input type="radio" name="pergunta75" value="1"></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><label style="font-family: Arial, serif; font-size: medium;">Voc&ecirc; j&aacute; concluiu algum curso superior? </label></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Sim </label><input type="radio" name="pergunta76" value="1"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">N&atilde;o</label><input type="radio" name="pergunta76" value="2"></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Se sim, qual? </label><input type="text" name="pergunta76" disabled></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
+          <p><span style="font-family: Arial, serif;"><span style="font-size: medium;"><strong>Gostaria de realizar algum coment&aacute;rio com rela&ccedil;&atilde;o ao formul&aacute;rio ou ao curso?</strong></span></span></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561" height="89">
+          <textarea name="pergunta77" rows="7" cols="70"></textarea>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</template>

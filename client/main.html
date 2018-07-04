@@ -1,0 +1,18 @@
+<head>
+  <title>Question&aacute;rio</title>
+</head>
+
+<body>
+{{>formEnviar}}
+</body>
+
+<template name="formEnviar">
+  <form>
+    {{> formDisciplina}}
+    {{> formAutoAvaliacao}}
+    {{> formAvalicaoInstituicao}}
+    {{> formAlunoIngressante}}
+    {{> formAlunoFormando}}
+    <input type="submit" class="btn" value="Enviar" id="enviar">
+  </form>
+</template>
