@@ -1,0 +1,63 @@
+<template name="voucher">
+  <form>
+    <p>
+      <label for="processo">Semestre</label>
+      <select id="processo">
+        <option id=""></option>
+        {{#each val in buscaProcesso}}
+        <option value="{{val._id}}">{{imprimirProcesso val}}</option>
+        {{/each}}
+      </select>
+    </p>
+    {{#if semestreSelecionado}}
+      <p>
+        <label for="curso">Curso</label>
+        <select id="curso">
+          <option id=""></option>
+          {{#each val in buscaCurso}}
+          <option value="{{val._id}}">{{val.nome}}</option>
+          {{/each}}
+        </select>
+      </p>
+      {{#if cursoSelecionado}}
+        <p>
+          <label><input type="radio" name="tipoAvaliacao" class="avalicao" value="1">Avaliação de disciplina</label>
+          <label><input type="radio" name="tipoAvaliacao" class="avalicao" value="2">AutoAvaliação e Institucional</label>
+        </p>
+        {{#if tipoAluno}}
+        <p>
+          <label><input type="radio" name="tipoAluno" class="aluno" value="1">Aluno Ingressante</label>
+          <label><input type="radio" name="tipoAluno" class="aluno" value="2">Aluno Formando</label>
+        </p>
+        <p>
+          <label for="qtdeVoucher"> Qtde voucher: </label>
+          <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="1" value="1">
+        </p>
+        <input id="gerar" type="submit" value="Gerar">
+        {{/if}}
+        {{#if disciplina}}
+        <p>
+          <label for="disciplina">Disciplina</label>
+          {{>disciplinaBusca}}
+        </p>
+        <p>
+          <label for="qtdeVoucher"> Qtde voucher: </label>
+          <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="1" value="1">
+        </p>
+        <input id="gerar" type="submit" value="Gerar">
+        {{/if}}
+
+      {{/if}}
+    {{/if}}
+  </form>
+</template>
+<template name="disciplinaBusca">
+  {{> inputAutocomplete settings=settingsDisciplina id='disciplina' name="disciplina" autocomplete="off" }}
+</template>
+<template name="vazio">
+  <span> Não encontrado</span>
+</template>
+
+<template name="discplinaAuto">
+  <span> {{this.Materia.nomeMateria}}</span>
+</template>
