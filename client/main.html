@@ -5,7 +5,7 @@
 
     {{> formDisciplina}}
     {{> formAutoAvaliacao}}
-    {{> formAvalicaoInstituicao}}
+    {{> formAvaliacaoInstituicao}}
     {{> formAlunoIngressante}}
     {{> formAlunoFormando}}
     <input type="submit" class="btn" value="Enviar" id="enviar">
@@ -13,11 +13,15 @@
 </template>
 <template name="validarForm">
   <form name="validarForm">
-    <a href="{{pathFor route= 'voucher'}}">
-      <label> Voucher</label>
-    </a>
-    <label>Insira seu voucher:</label>
-    <input type="number" id="voucher">
-    <input type="submit" id="validar" value="Enviar">
+    <p>
+      <a href="{{pathFor route= 'voucher'}}">
+        <label> Voucher</label>
+      </a>
+    </p>
+    <p>
+      <label>Insira seu voucher:</label>
+      <input type="number" id="voucher">
+      <input type="submit" id="validar" value="Enviar">
+    </p>
   </form>
 </template>

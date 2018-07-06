@@ -1,4 +1,4 @@
-import "/imports/ui/voucher"
+import "/imports/ui/voucher/voucher.js"
 Router.route('/voucher',{
   template:"voucher",
   name:"voucher"

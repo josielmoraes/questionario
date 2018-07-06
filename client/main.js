@@ -5,16 +5,16 @@ import '/imports/ui/startup/router.js'
 import '/imports/ui/forms/formDisciplina.js'
 import  "/imports/ui/forms/formAlunoFormando.js"
 import "/imports/ui/forms/formAlunoIngressante.js"
-import '/imports/ui/forms/formAutoAvalicao.js'
-import '/imports/ui/forms/formAvalicaoInstituicao.js'
+import '/imports/ui/forms/formAutoAvaliacao.js'
+import '/imports/ui/forms/formAvaliacaoInstituicao.js'
 import '/imports/collection/voucherCollection.js'
 //MONGO_URL=mongodb://localhost:27017/projeto meteor run
 
 Template.formEnviar.onCreated(function(){
   //console.log(this.view.name);
-
-  setTimeout(function(){
-
+  /*
+  $( window ).on( "load", function() {
+  //setTimeout(function(){
       var inicio=1950;
       var final=2020;
       elemento = document.getElementById("pergunta64");
@@ -49,8 +49,9 @@ Template.formEnviar.onCreated(function(){
         option.value = option.text = x;
         elemento.add(option)
       }
-    },200)
-
+    //},200)
+    })
+    */
 })
 Template.formEnviar.events({
   'click #enviar':function(event){
@@ -84,6 +85,7 @@ Template.formEnviar.events({
 })
 Template.validarForm.onCreated(function(){
   var self=this;
+  Session.set('voucher',"");
   self.autorun(function(){
     self.subscribe("buscaVoucher");
   })
@@ -95,6 +97,7 @@ Template.validarForm.events({
     num=parseInt(num)
     var tmp=Voucher.findOne({numero:num});
     if(tmp!=null){
+      Session.set('voucher',tmp);
       Router.go('/formulario');
     }
   }

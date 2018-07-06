@@ -3,8 +3,8 @@
     <tbody>
       <tr>
         <td style="background: #ffffff;" colspan="11" valign="top" bgcolor="#ffffff" width="561">
-          <p align="center"><label style="font-family: Arial, serif; font-size: medium;">INSTITUTO DE </label> <label style="color: #00b050; font-family: Arial, serif; font-size: medium;">ENGENHARIA</label></p>
-          <p align="center"><label style="color: #00b050; font-family: Arial, serif; font-size: medium;">COLEGIADO DO CURSO DE ENGENHARIA DE MINAS</label></p>
+          <p align="center"><label style="font-family: Arial, serif; font-size: medium;">INSTITUTO DE </label> <label style="font-family: Arial, serif; font-size: medium;">ENGENHARIA</label></p>
+          <p align="center"><label style=" font-family: Arial, serif; font-size: medium;">COLEGIADO DO CURSO DE {{nomeCurso}}</label></p>
         </td>
       </tr>
       <tr>
@@ -21,7 +21,13 @@
         <td style="background: #d0cece;" colspan="11" valign="top" bgcolor="#d0cece" width="561">
           <p><label style="font-family: Arial, serif; font-size: medium;">N&uacute;mero de matr&iacute;cula:</label><input name="pergunta62" type="text"></p>
           <p><label style="font-family: Arial, serif; font-size: medium;">Qual o seu g&ecirc;nero? </label><input name="pergunta63"  type="text"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Em que ano voc&ecirc; nasceu?</label><select name="pergunta64" id="pergunta64"></select></p>
+          <p><label style="font-family: Arial, serif; font-size: medium;">Em que ano voc&ecirc; nasceu?</label>
+             <select name="pergunta64" id="pergunta64">
+               {{#each val in ano}}
+               <option value={{val}}>{{val}}</option>
+               {{/each}}
+             </select>
+          </p>
           <p><label style="font-family: Arial, serif; font-size: medium;">Qual o seu estado de origem?</label>
             <select name="pergunta65" id="pergunta65">
               <option value="AC">Acre</option>
@@ -54,7 +60,14 @@
             </select>
           </p>
           <p><label style="font-family: Arial, serif; font-size: medium;">Qual a cidade de origem? </label><input name="pergunta66" id="pergunta66"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Em que ano voc&ecirc; concluiu o ensino m&eacute;dio?</label> <select name="pergunta67" id="pergunta67"></select></p>
+          <p>
+            <label style="font-family: Arial, serif; font-size: medium;">Em que ano voc&ecirc; concluiu o ensino m&eacute;dio?</label>
+            <select name="pergunta67" id="pergunta67">
+              {{#each val in anoEnsino}}
+              <option value={{val}}>{{val}}</option>
+              {{/each}}
+            </select>
+          </p>
         </td>
       </tr>
       <tr>

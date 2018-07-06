@@ -9,7 +9,8 @@ Template.voucher.onCreated(function(){
     Session.set("tipoAvaliacao",0);
     Session.set('tipoAluno',0);
     Session.set('processoSelecionado',"")
-    Session.set('cursoSelecionado',"")
+    Session.set('cursoSelecionado',"");
+    Session.set('disciplinaSelecionada',"");
   var self=this;
 
   self.autorun(function(){
@@ -18,6 +19,7 @@ Template.voucher.onCreated(function(){
     self.subscribe("buscaCurso");
     self.subscribe("buscaVoucher");
   })
+  Meteor.subscribe("buscaCurso");
 })
 
 Template.voucher.helpers({
@@ -104,13 +106,23 @@ Template.voucher.events({
     qtde=$("#qtdeVoucher").val();
     var processo=Session.get('processoSelecionado');
     var tipoAvaliacao=Session.get('tipoAvaliacao');
+    tipoAvaliacao=parseInt(tipoAvaliacao);
+    if(tipoAvaliacao==1){
+      var disciplina=Session.get('disciplinaSelecionada');
+      if(disciplina==""){
+        $("#disciplinaId").focus()
+        return
+      }
+    }
     var curso=Session.get('cursoSelecionado');
     var tipoAluno=Session.get('tipoAluno');
-    var disciplina=Session.get('disciplinaSelecionada');
-    console.log(processo,tipoAvaliacao,curso,tipoAluno,disciplina)
+    tipoAluno=parseInt(tipoAluno)
+    //console.log(processo,tipoAvaliacao,curso,tipoAluno,disciplina)
+
     var tmp=Meteor.call('cadastrarVoucher',qtde,processo,curso,disciplina,tipoAluno,tipoAvaliacao,function(error, result) {
       console.log(result)
     })
+
   }
 })
 Template.discplinaAuto.helpers({
@@ -152,12 +164,19 @@ Template.disciplinaBusca.helpers({
         },
       ],
     }
+  },
+  'inserirRe':function(){
+    setTimeout(function() {
+      console.log('teste')
+      $('#disciplinaId').attr("required", true);
+    },100);
   }
+
 })
 Template.disciplinaBusca.events({
-  'autocompleteselect #disciplina':function(event,template,doc){
+  'autocompleteselect #disciplinaId':function(event,template,doc){
     event.preventDefault();
-    console.log(doc)
+    //console.log(doc)
     Session.set('disciplinaSelecionada',doc);
   }
 })

@@ -1,5 +1,5 @@
-import './formAlunoFormando.html'
-Template.formAlunoFormando.onCreated(function(){
+import './formAutoAvaliacao.html'
+Template.formAutoAvaliacao.onCreated(function(){
   var self=this;
   var curso;
   self.autorun(function(){
@@ -8,9 +8,8 @@ Template.formAlunoFormando.onCreated(function(){
     self.subscribe("buscaCurso");
     //self.subscribe("buscaVoucher");
   })
-
 })
-Template.formAlunoFormando.helpers({
+Template.formAutoAvaliacao.helpers({
   nomeCurso(){
     var v=Session.get('voucher');
     if(v!=null){
@@ -18,15 +17,11 @@ Template.formAlunoFormando.helpers({
       return  curso.nome.toUpperCase();
     }
   },
-  ano(){
-    console.log("Entra")
-    var inicio=2015;
-    var final=2030;
-    var array=new Array();
-    array.push(" ");
-    for(x=inicio;x<=final;x++){
-      array.push(x);
+  nomeCurso2(){
+    var v=Session.get('voucher');
+    if(v!=null){
+      curso=Curso.findOne({_id:v.curso})
+      return  curso.nome;
     }
-    return array;
-  }
+  },
 })

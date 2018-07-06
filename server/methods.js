@@ -15,7 +15,8 @@ Meteor.methods({
             processo:processo,
             curso:curso,
             tipoAluno:tipoAluno,
-            tipoAvaliacao
+            tipoAvaliacao,
+            disciplina:disciplina
           })
           qtdeCadastrado++;
           sair=false

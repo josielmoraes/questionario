@@ -8,5 +8,5 @@ import '/imports/collection/ofertaDisciplina.js'
 import '/imports/collection/voucherCollection.js'
 Meteor.startup(() => {
     console.log(Processo.find({}).fetch());
-  // Voucher.remove({})
+    //Voucher.remove({})
 });
