@@ -1,7 +1,8 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
+import { Session } from 'meteor/session'
 import './main.html';
-import '/imports/ui/startup/router.js'
+import '/imports/ui/startup/client/router.js'
 import '/imports/ui/forms/formDisciplina.js'
 import  "/imports/ui/forms/formAlunoFormando.js"
 import "/imports/ui/forms/formAlunoIngressante.js"
@@ -9,6 +10,7 @@ import '/imports/ui/forms/formAutoAvaliacao.js'
 import '/imports/ui/forms/formAvaliacaoInstituicao.js'
 import '/imports/collection/voucherCollection.js'
 import '/imports/ui/voucher/imprimirVoucher.js'
+import '/imports/ui/startup/client/captcha.js'
 //MONGO_URL=mongodb://localhost:27017/projeto meteor run
 
 Template.formEnviar.onCreated(function(){
@@ -38,7 +40,8 @@ Template.formEnviar.helpers({
     }else{
       return false;
     }
-  }
+  },
+
 })
 Template.formEnviar.events({
   'click #enviar':function(event){
@@ -84,16 +87,27 @@ Template.formEnviar.events({
       }
     }
     console.log(array)
-  }
+  },
+
 })
 Template.validarForm.onCreated(function(){
   var self=this;
-  Session.set('voucher',"");
+  Session.setPersistent('voucher',"");
   Meteor.subscribe("buscaCurso");
   self.autorun(function(){
     self.subscribe("buscaVoucher");
     self.subscribe("buscaCurso");
   })
+})
+Template.validarForm.helpers({
+  validar(currentUser){
+    console.log(currentUser)
+    if(currentUser!=null){
+      return true;
+    }else{
+      return false;
+    }
+  }
 })
 Template.validarForm.events({
   'click #validar':function(event){
@@ -102,8 +116,29 @@ Template.validarForm.events({
     num=parseInt(num)
     var tmp=Voucher.findOne({numero:num});
     if(tmp!=null){
-      Session.set('voucher',tmp);
-      Router.go('/formulario');
+      if(tmp.validar==false){
+        Session.setPersistent('voucher',tmp);
+        Router.go('/formulario');
+      }else{
+        alert('Voucher já utilizado')
+      }
+    }else{
+      alert('Voucher não cadastrado')
     }
+  },
+  'click #entrar':function(event){
+    event.preventDefault();
+    email=$("#email").val();
+    senha=$("#psw").val();
+    Meteor.loginWithPassword(email,senha, function(e,r){
+      if(e){
+        //console.log(e);
+      }else{
+        //console.log(r);
+        console.log('teste')
+        Router.go('/')
+      }
+    })
+    console.log("a")
   }
 })

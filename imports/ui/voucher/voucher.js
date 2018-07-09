@@ -82,6 +82,21 @@ Template.voucher.helpers({
     }else{
       return false;
     }
+  },
+  validar(currentUser){
+    console.log(currentUser);
+    if(currentUser!=null){
+      if(currentUser.profile.permission==0){
+        return true;
+      }else{
+        return false
+      }
+    }else{
+      return false;
+    }
+  },
+  routerGO(){
+    Router.go('/')
   }
 })
 Template.voucher.events({
@@ -89,14 +104,19 @@ Template.voucher.events({
     event.preventDefault();
     var id=event.target.id;
     Session.set("tipoAvaliacao",event.target.value);
-
+    if(event.target.value==1){
+      Session.set('tipoAluno',0);
+    }else if(event.target.value==2){
+        Session.set('disciplinaSelecionada',"");
+    }
   },
   'change #curso':function(event){
     event.preventDefault();
     var valor=$('#curso').val();
     if(valor!=""){
       var tmp=Curso.findOne({_id:valor})
-       Session.set('cursoSelecionado',valor)
+       Session.set('cursoSelecionado',valor);
+       $("#disciplinaId").val("");
     }else{
       Session.set('cursoSelecionado',"")
     }
@@ -139,6 +159,8 @@ Template.voucher.events({
 
     var tmp=Meteor.call('cadastrarVoucher',qtde,processo,curso,disciplina,tipoAluno,tipoAvaliacao,function(error, result) {
       alert("Foram gerados "+result+" voucher")
+      Session.set("processoSelecionado","")
+      $('#processo').val("")
     })
 
   }

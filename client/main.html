@@ -15,12 +15,12 @@
         {{/if}}
       {{/if}}
     {{/if}}
-    <input type="submit" class="btn" value="Enviar" id="enviar">
+
 
   </form>
 </template>
 <template name="validarForm">
-  <form name="validarForm">
+    {{#if validar currentUser}}
     <p>
       <a href="{{pathFor route= 'voucher'}}">
         <label>Gerar Voucher</label>
@@ -31,9 +31,26 @@
         <label>Imprimir Voucher</label>
       </a>
     </p>
+    {{else}}
+    <form name="login">
+      <p>
+        <label>Email: </label>
+        <input type="text" id="email">
+      </p>
+      <p>
+        <label>Senha: </label>
+        <input type="password" id="psw">
+      </p>
+      <p>
+        <input type="submit" id="entrar" value="Entrar">
+      </p>
+    </form>
+    {{/if}}
+    <form name="validarForm">
     <p>
       <label>Insira seu voucher:</label>
       <input type="number" id="voucher">
+      {{> reCAPTCHA}}
       <input type="submit" id="validar" value="Enviar">
     </p>
   </form>

@@ -1,4 +1,5 @@
 <template name="tableVoucher">
+  {{#if validar currentUser}}
   <form>
     <p>
       <label for="processo">Semestre</label>
@@ -57,4 +58,7 @@
       {{/if}}
     {{/if}}
   </form>
+  {{else}}
+    {{routerGO}}
+  {{/if}}
 </template>

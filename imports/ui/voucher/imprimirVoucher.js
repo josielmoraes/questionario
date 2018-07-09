@@ -96,7 +96,18 @@ Template.tableVoucher.helpers({
       return tmp.length;
     }
 
+  },
+  validar(currentUser){
+    if(currentUser==null){
+      return false
+    }else{
+      return true;
+    }
+  },
+  routerGO(){
+    Router.go('/')
   }
+
 })
 Template.tableVoucher.events({
   'change .avalicao':function(event){
