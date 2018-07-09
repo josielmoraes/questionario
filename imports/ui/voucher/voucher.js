@@ -16,7 +16,7 @@ Template.voucher.onCreated(function(){
   self.autorun(function(){
     self.subscribe("buscaProcesso");
     self.subscribe("buscaSemestre");
-    self.subscribe("buscaCurso");
+    //self.subscribe("buscaCurso");
     self.subscribe("buscaVoucher");
   })
   Meteor.subscribe("buscaCurso");
@@ -66,6 +66,22 @@ Template.voucher.helpers({
     }else {
       return false;
     }
+  },
+  qtde(){
+    var tmp=Session.get('disciplinaSelecionada');
+    if(tmp!=""){
+      return true;
+    }else{
+      return false;
+    }
+  },
+  qtde2(){
+    var tmp=Session.get('tipoAluno');
+    if(tmp!=0){
+      return true;
+    }else{
+      return false;
+    }
   }
 })
 Template.voucher.events({
@@ -113,6 +129,8 @@ Template.voucher.events({
         $("#disciplinaId").focus()
         return
       }
+    }else{
+      disciplina="";
     }
     var curso=Session.get('cursoSelecionado');
     var tipoAluno=Session.get('tipoAluno');
@@ -120,7 +138,7 @@ Template.voucher.events({
     //console.log(processo,tipoAvaliacao,curso,tipoAluno,disciplina)
 
     var tmp=Meteor.call('cadastrarVoucher',qtde,processo,curso,disciplina,tipoAluno,tipoAvaliacao,function(error, result) {
-      console.log(result)
+      alert("Foram gerados "+result+" voucher")
     })
 
   }

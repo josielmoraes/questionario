@@ -9,3 +9,6 @@ Router.route('/formulario',{
 Router.route('/',{
   template:"validarForm",
 })
+Router.route('/imprimirVoucher',{
+  template:"tableVoucher",
+})

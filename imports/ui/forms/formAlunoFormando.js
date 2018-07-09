@@ -5,7 +5,7 @@ Template.formAlunoFormando.onCreated(function(){
   self.autorun(function(){
     //self.subscribe("buscaProcesso");
     //self.subscribe("buscaSemestre");
-    self.subscribe("buscaCurso");
+    //self.subscribe("buscaCurso");
     //self.subscribe("buscaVoucher");
   })
 
@@ -15,7 +15,8 @@ Template.formAlunoFormando.helpers({
     var v=Session.get('voucher');
     if(v!=null){
       curso=Curso.findOne({_id:v.curso})
-      return  curso.nome.toUpperCase();
+      console.log(curso)
+      return  curso.nome;
     }
   },
   ano(){

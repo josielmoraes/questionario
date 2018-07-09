@@ -2,20 +2,33 @@
 
 <template name="formEnviar">
   <form>
-
-    {{> formDisciplina}}
-    {{> formAutoAvaliacao}}
-    {{> formAvaliacaoInstituicao}}
-    {{> formAlunoIngressante}}
-    {{> formAlunoFormando}}
+    {{#if tipoQuestionario}}
+      {{> formDisciplina}}
+    {{else}}
+      {{> formAutoAvaliacao}}
+      {{> formAvaliacaoInstituicao}}
+      {{#if tipoAluno}}
+        {{#if tipoAluno2}}
+          {{> formAlunoIngressante}}
+        {{else}}
+          {{> formAlunoFormando}}
+        {{/if}}
+      {{/if}}
+    {{/if}}
     <input type="submit" class="btn" value="Enviar" id="enviar">
+
   </form>
 </template>
 <template name="validarForm">
   <form name="validarForm">
     <p>
       <a href="{{pathFor route= 'voucher'}}">
-        <label> Voucher</label>
+        <label>Gerar Voucher</label>
+      </a>
+    </p>
+    <p>
+      <a href="{{pathFor route= 'imprimirVoucher'}}">
+        <label>Imprimir Voucher</label>
       </a>
     </p>
     <p>

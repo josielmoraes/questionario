@@ -1,4 +1,4 @@
-<template name="voucher">
+<template name="tableVoucher">
   <form>
     <p>
       <label for="processo">Semestre</label>
@@ -32,10 +32,11 @@
         </p>
           {{#if qtde2}}
           <p>
-            <label for="qtdeVoucher"> Qtde voucher: </label>
-            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="1" value="1">
+            <label for="qtdeVoucher"> Qtde máxima voucher: </label>
+            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="0" value="{{valorInput}}" max="{{valorInput}}">
+
           </p>
-          <input id="gerar" type="submit" value="Gerar">
+          <input id="imprimir" type="submit" value="Imprimir">
           {{/if}}
         {{/if}}
         {{#if disciplina}}
@@ -45,25 +46,15 @@
         </p>
           {{#if qtde}}
           <p>
-            <label for="qtdeVoucher"> Qtde voucher: </label>
-            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="1" value="1">
+            <label for="qtdeVoucher"> Qtde máxima voucher: </label>
+            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="0" value="{{valorInput}}" max="{{valorInput}}">
+
           </p>
-          <input id="gerar" type="submit" value="Gerar">
+          <input id="imprimir" type="submit" value="Imprimir">
           {{/if}}
         {{/if}}
 
       {{/if}}
     {{/if}}
   </form>
-</template>
-<template name="disciplinaBusca">
-  {{> inputAutocomplete settings=settingsDisciplina id='disciplinaId' name="disciplina" autocomplete="off" }}
-  {{inserirRe}}
-</template>
-<template name="vazio">
-  <span> Não encontrado</span>
-</template>
-
-<template name="discplinaAuto">
-  <span> {{this.Materia.nomeMateria}}</span>
 </template>

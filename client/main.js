@@ -8,86 +8,91 @@ import "/imports/ui/forms/formAlunoIngressante.js"
 import '/imports/ui/forms/formAutoAvaliacao.js'
 import '/imports/ui/forms/formAvaliacaoInstituicao.js'
 import '/imports/collection/voucherCollection.js'
+import '/imports/ui/voucher/imprimirVoucher.js'
 //MONGO_URL=mongodb://localhost:27017/projeto meteor run
 
 Template.formEnviar.onCreated(function(){
-  //console.log(this.view.name);
-  /*
-  $( window ).on( "load", function() {
-  //setTimeout(function(){
-      var inicio=1950;
-      var final=2020;
-      elemento = document.getElementById("pergunta64");
-      option = document.createElement( 'option' );
-      option.value = option.text = "";
-      elemento.add(option)
-      for(x=inicio;x<final;x++){
-        option = document.createElement( 'option' );
-        option.value = option.text = x;
-        elemento.add(option)
-      }
 
-      elemento = document.getElementById("pergunta67");
-      option = document.createElement( 'option' );
-      option.value = option.text = "";
-      elemento.add(option)
-      for(x=inicio;x<final;x++){
-        option = document.createElement( 'option' );
-        option.value = option.text = x;
-        elemento.add(option)
-      }
-
-
-      inicio=2017;
-      final=2025;
-      elemento = document.getElementById("pergunta79");
-      option = document.createElement( 'option' );
-      option.value = option.text = "";
-      elemento.add(option)
-      for(x=inicio;x<final;x++){
-        option = document.createElement( 'option' );
-        option.value = option.text = x;
-        elemento.add(option)
-      }
-    //},200)
-    })
-    */
+})
+Template.formEnviar.helpers({
+  tipoQuestionario(){
+    var tmp=Session.get('voucher');
+    if(tmp.tipoAvaliacao==1){
+      return true;
+    }else{
+      return false;
+    }
+  },
+  tipoAluno(){
+    var tmp=Session.get('voucher');
+    if(tmp.tipoAluno==1 || tmp.tipoAluno==2){
+      return true;
+    }else{
+      return false;
+    }
+  },
+  tipoAluno2(){
+    var tmp=Session.get('voucher');
+    if(tmp.tipoAluno==1){
+      return true;
+    }else{
+      return false;
+    }
+  }
 })
 Template.formEnviar.events({
   'click #enviar':function(event){
     event.preventDefault();
-    var t=98;
+    var t=94;
+    var array=[];
     for(x=1;x<=t;x++){
       id="[name=pergunta"+x+"]";
-
       tag=$(id).prop("tagName");
-      console.log(tag);
       if(tag=="INPUT"){
         type=$(id).attr("type");
         if(type=="radio"){
           radio="input[name=pergunta"+x+"]:checked";
           val=$(radio).val();
-          //console.log(val)
+          if(val==null){
+            $(id).focus();
+            //return;
+          }else{
+            array.push({pergunta:x, resposta:val})
+          }
         }else if(type=="text") {
           val=$(id).val();
-          //console.log(id, val)
+          if(val==""){
+            $(id).focus();
+            //return;
+          }else{
+            array.push({pergunta:x, resposta:val})
+          }
         }
       }else if(tag=="SELECT"){
         a=$(id).attr("id");
-        console.log(a);
+        val=$(id).val();
+        if(val==""){
+          $(id).focus();
+          //return;
+        }else{
+          array.push({pergunta:x, resposta:val})
+        }
       }else if(tag=="TEXTAREA"){
         a=$(id).attr("id");
-        //console.log(a);
+        val=$(id).val();
+        array.push({pergunta:x, resposta:val})
       }
-
     }
+    console.log(array)
   }
 })
 Template.validarForm.onCreated(function(){
   var self=this;
   Session.set('voucher',"");
+  Meteor.subscribe("buscaCurso");
   self.autorun(function(){
     self.subscribe("buscaVoucher");
+    self.subscribe("buscaCurso");
   })
 })
 Template.validarForm.events({

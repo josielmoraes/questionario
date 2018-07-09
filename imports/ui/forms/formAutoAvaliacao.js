@@ -5,7 +5,7 @@ Template.formAutoAvaliacao.onCreated(function(){
   self.autorun(function(){
     //self.subscribe("buscaProcesso");
     //self.subscribe("buscaSemestre");
-    self.subscribe("buscaCurso");
+    //self.subscribe("buscaCurso");
     //self.subscribe("buscaVoucher");
   })
 })
