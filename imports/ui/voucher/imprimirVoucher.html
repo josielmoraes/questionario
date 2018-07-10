@@ -1,57 +1,57 @@
 <template name="tableVoucher">
+  <div class="container col-sm-10">
   {{#if validar currentUser}}
-  <form>
-    <p>
-      <label for="processo">Semestre</label>
-      <select id="processo">
+  <form class="form-group">
+    <div class="form-group row">
+      <label for="processo" class="control-group col-sm-2">Semestre</label>
+      <select id="processo" class="form-control dropdown col-sm-2">
         <option id=""></option>
         {{#each val in buscaProcesso}}
         <option value="{{val._id}}">{{imprimirProcesso val}}</option>
         {{/each}}
       </select>
-    </p>
+    </div>
     {{#if semestreSelecionado}}
-      <p>
-        <label for="curso">Curso</label>
-        <select id="curso">
+      <div class="form-group row">
+        <label for="curso" class="control-group col-sm-2">Curso</label>
+        <select id="curso" class="form-control dropdown col-sm-4">
           <option id=""></option>
           {{#each val in buscaCurso}}
           <option value="{{val._id}}">{{val.nome}}</option>
           {{/each}}
         </select>
-      </p>
+      </div>
       {{#if cursoSelecionado}}
-        <p>
-          <label><input type="radio" name="tipoAvaliacao" class="avalicao" value="1">Avaliação de disciplina</label>
-          <label><input type="radio" name="tipoAvaliacao" class="avalicao" value="2">AutoAvaliação e Institucional</label>
-        </p>
+        <div class="form-group row">
+          <label class="col-sm-4"><input type="radio" name="tipoAvaliacao" class="avalicao mr-2" value="1">Avaliação de disciplina</label>
+          <label class="col-sm-4"><input type="radio" name="tipoAvaliacao" class="avalicao mr-2" value="2">AutoAvaliação e Institucional</label>
+        </div>
         {{#if tipoAluno}}
-        <p>
-          <label><input type="radio" name="tipoAluno" class="aluno" value="1">Aluno Ingressante</label>
-          <label><input type="radio" name="tipoAluno" class="aluno" value="2">Aluno Formando</label>
-          <label><input type="radio" name="tipoAluno" class="aluno" value="3">Outros</label>
-        </p>
+        <div class="form-group row">
+          <label class="col-sm-3"><input type="radio" name="tipoAluno" class="aluno mr-2" value="1">Aluno Ingressante</label>
+          <label class="col-sm-3"><input type="radio" name="tipoAluno" class="aluno mr-2" value="2">Aluno Formando</label>
+          <label class="col-sm-3"><input type="radio" name="tipoAluno" class="aluno mr-2" value="3">Outros</label>
+        </div>
           {{#if qtde2}}
-          <p>
-            <label for="qtdeVoucher"> Qtde máxima voucher: </label>
-            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="0" value="{{valorInput}}" max="{{valorInput}}">
+          <div class="form-group row">
+            <label for="qtdeVoucher" class="col-sm-2"> Qtde máxima voucher: </label>
+            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="0" value="{{valorInput}}" max="{{valorInput}}" class="col-sm-2 form-control">
 
-          </p>
-          <input id="imprimir" type="submit" value="Imprimir">
+          </div>
+          <input id="imprimir" type="submit" value="Imprimir" class="btn">
           {{/if}}
         {{/if}}
         {{#if disciplina}}
-        <p>
-          <label for="disciplina">Disciplina</label>
+        <div class="form-group row mb-2 ">
+          <label for="disciplina" class="col-sm-2">Disciplina</label>
           {{>disciplinaBusca}}
-        </p>
+        </div>
           {{#if qtde}}
-          <p>
-            <label for="qtdeVoucher"> Qtde máxima voucher: </label>
-            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="0" value="{{valorInput}}" max="{{valorInput}}">
-
-          </p>
-          <input id="imprimir" type="submit" value="Imprimir">
+          <div class="form-group row">
+            <label for="qtdeVoucher" class="col-sm-2"> Qtde máxima voucher: </label>
+            <input type="number" id="qtdeVoucher" name="qtdeVoucher" min="0" value="{{valorInput}}" max="{{valorInput}}" class="col-sm-2 form-control">
+          </div>
+          <input id="imprimir" type="submit" value="Imprimir" class="btn">
           {{/if}}
         {{/if}}
 
@@ -61,4 +61,5 @@
   {{else}}
     {{routerGO}}
   {{/if}}
+</div>
 </template>

@@ -1,301 +1,303 @@
 <template name="formAlunoFormando">
-  <table width="571" cellspacing="0" cellpadding="4" border="1">
-    <tbody>
-      <tr>
-        <td style="background: #ffffff;" colspan="6" valign="top" bgcolor="#ffffff" width="561">
-          <p align="center"><label style="font-family: Arial, serif; font-size: medium;">INSTITUTO DE ENGENHARIA</label></p>
-          <p align="center"><label style="font-family: Arial, serif; font-size: medium;">COLEGIADO DO CURSO DE {{nomeCurso}}</label></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="18">
-          <p align="center"><label style="font-family: Arial, serif; font-size: medium;"><strong>Formul&aacute;rio para alunos Formandos</strong></label></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #d0cece;" colspan="6" valign="top" bgcolor="#d0cece" width="561" height="15">
-          <p><label style="font-family: Arial, serif; font-size: medium;"><strong>Itens de preenchimento obrigat&oacute;rio:</strong></label></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #d0cece;" colspan="6" valign="top" bgcolor="#d0cece" width="561">
-          <p><label style="font-family: Arial, serif; font-size: medium;">N&uacute;mero de matr&iacute;cula</label><input type="text" name="pergunta78"></p>
-          <p>
-            <label style="font-family: Arial, serif; font-size: medium;">Em qual ano voc&ecirc; concluir&aacute; o curso?</label>
-            <select  name="pergunta79" id="pergunta79">
-              {{#each val in ano}}
-              <option value={{val}}>{{val}}</option>
-              {{/each}}
-            </select>
-          </p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #d0cece;" colspan="6" valign="top" bgcolor="#d0cece" width="561">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Em qual semestre voc&ecirc; concluir&aacute; o curso? </label></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">&Iacute;mpar (1) </label><input type="radio" name="pergunta80" value="1"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Par (2)</label><input type="radio" name="pergunta80" value="2"></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" colspan="6" valign="top" bgcolor="#ffffff" width="561">
-          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Em qual &aacute;rea pretende atuar?</label> </p>
-          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Abrir neg&oacute;cio pr&oacute;prio</label><input type="radio" name="pergunta81" value="1"></p>
-          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Consultoria</label><input type="radio" name="pergunta81" value="2"></p>
-          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Doc&ecirc;ncia</label><input type="radio" name="pergunta81" value="3"></p>
-          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Servidor p&uacute;blico</label><input type="radio" name="pergunta81" value="4"></p>
-          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Funcion&aacute;rio (CLT)</label><input type="radio" name="pergunta81" value="5"></p>
-          <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Outra op&ccedil;&atilde;o</label><input type="radio" name="pergunta81" value="6"></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" colspan="6" valign="top" bgcolor="#ffffff" width="561">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Quais modalidades de apoio estudantil voc&ecirc; utilizou?</label><input type="radio" name="pergunta82" value="1"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Aux&iacute;lio alimenta&ccedil;&atilde;o;</label><input type="radio" name="pergunta82" value="2"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Aux&iacute;lio moradia</label><input type="radio" name="pergunta82" value="3"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Bolsa monitoria</label><input type="radio" name="pergunta82" value="4"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Bolsa perman&ecirc;ncia</label><input type="radio" name="pergunta82" value="5"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Bolsa PIBIC/PIBIT</label><input type="radio" name="pergunta82" value="6"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Outros</label><input type="radio" name="pergunta82" value="7"></p>
-          <p><label style="font-family: Arial, serif; font-size: medium;">Nenhuma</label><input type="radio" name="pergunta82" value="8"></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="24">
-          <p align="center"><label style="font-family: Arial, serif; font-size: medium;">Avalie cada um dos itens abaixo considerando os seguintes conceitos:</label></p>
-          <p align="center"><label style="font-family: Arial, serif; font-size: medium;"><strong>1 = Fraco 2 = Regular 3 = Bom 4 = Muito Bom 5 = Excelente</strong></label></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o corpo docente do curso?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta83" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta83" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta83" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta83" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta83" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para a conviv&ecirc;ncia estudantil (colegas, CA, DCE, etc.)?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta84" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta84" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta84" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta84" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta84" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para a estrutura curricular?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta85" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta85" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta85" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta85" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta85" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para as condi&ccedil;&otilde;es f&iacute;sicas das salas de aula?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta86" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta86" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta86" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta86" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta86" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para as condi&ccedil;&otilde;es f&iacute;sicas dos laborat&oacute;rios?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta87" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta87" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta87" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta87" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta87" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para as condi&ccedil;&otilde;es f&iacute;sicas da biblioteca?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta88" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta88" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta88" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta88" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta88" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o atendimento na secretaria do curso?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta89" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta89" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta89" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta89" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta89" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para os recursos institucionais (data show, transportes, etc.)?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta90" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta90" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta90" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta90" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta90" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui aos est&aacute;gios realizados durante o curso?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta91" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta91" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta91" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta91" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta91" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o seu empenho durante o curso de gradua&ccedil;&atilde;o?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta92" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta92" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta92" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta92" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta92" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o curso de gradua&ccedil;&atilde;o como um todo?</label></p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta93" id="" value="1"> 1</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta93" id="" value="2"> 2</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta93" id="" value="3"> 3</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-        <p align="center"><input type="radio" name="pergunta93" id="" value="4"> 4</p>
-        </td>
-        <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
-          <p align="center"><input type="radio" name="pergunta93" id="" value="5">5</p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="24">
-          <p><label style="font-family: Arial, serif; font-size: medium;"><strong>Gostaria de realizar cr&iacute;ticas e sugest&otilde;es para melhoria do curso?</strong></label></p>
-        </td>
-      </tr>
-      <tr>
-        <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="191">
-          <textarea name="pergunta94" rows="10" cols="70"></textarea>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="container col-sm-8">
+    <table width="571" cellspacing="0" cellpadding="4" border="1" class="table table-sm">
+      <tbody>
+        <tr>
+          <td style="background: #ffffff;" colspan="6" valign="top" bgcolor="#ffffff" width="561">
+            <p align="center"><label style="font-family: Arial, serif; font-size: medium;">INSTITUTO DE ENGENHARIA</label></p>
+            <p align="center"><label style="font-family: Arial, serif; font-size: medium;">COLEGIADO DO CURSO DE {{nomeCurso}}</label></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="18">
+            <p align="center"><label style="font-family: Arial, serif; font-size: medium;"><strong>Formul&aacute;rio para alunos Formandos</strong></label></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #d0cece;" colspan="6" valign="top" bgcolor="#d0cece" width="561" height="15">
+            <p><label style="font-family: Arial, serif; font-size: medium;"><strong>Itens de preenchimento obrigat&oacute;rio:</strong></label></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #d0cece;" colspan="6" valign="top" bgcolor="#d0cece" width="561">
+            <p><label style="font-family: Arial, serif; font-size: medium;">N&uacute;mero de matr&iacute;cula</label><input type="text" name="pergunta78"></p>
+            <p>
+              <label style="font-family: Arial, serif; font-size: medium;">Em qual ano voc&ecirc; concluir&aacute; o curso?</label>
+              <select  name="pergunta79" id="pergunta79">
+                {{#each val in ano}}
+                <option value={{val}}>{{val}}</option>
+                {{/each}}
+              </select>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #d0cece;" colspan="6" valign="top" bgcolor="#d0cece" width="561">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Em qual semestre voc&ecirc; concluir&aacute; o curso? </label></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">&Iacute;mpar (1) </label><input type="radio" name="pergunta80" value="1"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Par (2)</label><input type="radio" name="pergunta80" value="2"></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" colspan="6" valign="top" bgcolor="#ffffff" width="561">
+            <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Em qual &aacute;rea pretende atuar?</label> </p>
+            <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Abrir neg&oacute;cio pr&oacute;prio</label><input type="radio" name="pergunta81" value="1"></p>
+            <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Consultoria</label><input type="radio" name="pergunta81" value="2"></p>
+            <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Doc&ecirc;ncia</label><input type="radio" name="pergunta81" value="3"></p>
+            <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Servidor p&uacute;blico</label><input type="radio" name="pergunta81" value="4"></p>
+            <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Funcion&aacute;rio (CLT)</label><input type="radio" name="pergunta81" value="5"></p>
+            <p><label style="color: #ff0000; font-family: Arial, serif; font-size: medium;">Outra op&ccedil;&atilde;o</label><input type="radio" name="pergunta81" value="6"></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" colspan="6" valign="top" bgcolor="#ffffff" width="561">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Quais modalidades de apoio estudantil voc&ecirc; utilizou?</label><input type="radio" name="pergunta82" value="1"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Aux&iacute;lio alimenta&ccedil;&atilde;o;</label><input type="radio" name="pergunta82" value="2"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Aux&iacute;lio moradia</label><input type="radio" name="pergunta82" value="3"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Bolsa monitoria</label><input type="radio" name="pergunta82" value="4"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Bolsa perman&ecirc;ncia</label><input type="radio" name="pergunta82" value="5"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Bolsa PIBIC/PIBIT</label><input type="radio" name="pergunta82" value="6"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Outros</label><input type="radio" name="pergunta82" value="7"></p>
+            <p><label style="font-family: Arial, serif; font-size: medium;">Nenhuma</label><input type="radio" name="pergunta82" value="8"></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="24">
+            <p align="center"><label style="font-family: Arial, serif; font-size: medium;">Avalie cada um dos itens abaixo considerando os seguintes conceitos:</label></p>
+            <p align="center"><label style="font-family: Arial, serif; font-size: medium;"><strong>1 = Fraco 2 = Regular 3 = Bom 4 = Muito Bom 5 = Excelente</strong></label></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o corpo docente do curso?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta83" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta83" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta83" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta83" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta83" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para a conviv&ecirc;ncia estudantil (colegas, CA, DCE, etc.)?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta84" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta84" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta84" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta84" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta84" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para a estrutura curricular?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta85" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta85" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta85" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta85" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta85" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para as condi&ccedil;&otilde;es f&iacute;sicas das salas de aula?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta86" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta86" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta86" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta86" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta86" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para as condi&ccedil;&otilde;es f&iacute;sicas dos laborat&oacute;rios?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta87" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta87" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta87" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta87" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta87" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para as condi&ccedil;&otilde;es f&iacute;sicas da biblioteca?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta88" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta88" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta88" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta88" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta88" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o atendimento na secretaria do curso?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta89" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta89" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta89" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta89" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta89" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para os recursos institucionais (data show, transportes, etc.)?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta90" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta90" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta90" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta90" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta90" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui aos est&aacute;gios realizados durante o curso?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta91" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta91" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta91" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta91" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta91" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o seu empenho durante o curso de gradua&ccedil;&atilde;o?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta92" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta92" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta92" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta92" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta92" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="390" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;">Qual nota voc&ecirc; atribui para o curso de gradua&ccedil;&atilde;o como um todo?</label></p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta93" id="" value="1"> 1</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta93" id="" value="2"> 2</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta93" id="" value="3"> 3</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta93" id="" value="4"> 4</p>
+          </td>
+          <td style="background: #ffffff;" bgcolor="#ffffff" width="35">
+            <p align="center"><input type="radio" name="pergunta93" id="" value="5">5</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="24">
+            <p><label style="font-family: Arial, serif; font-size: medium;"><strong>Gostaria de realizar cr&iacute;ticas e sugest&otilde;es para melhoria do curso?</strong></label></p>
+          </td>
+        </tr>
+        <tr>
+          <td style="background: #ffffff;" colspan="6" bgcolor="#ffffff" width="561" height="191">
+            <textarea name="pergunta94" rows="10" cols="70"></textarea>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>

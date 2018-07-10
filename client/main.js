@@ -2,7 +2,7 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { Session } from 'meteor/session'
 import './main.html';
-import '/imports/ui/startup/client/router.js'
+import '/imports/startup/client/router.js'
 import '/imports/ui/forms/formDisciplina.js'
 import  "/imports/ui/forms/formAlunoFormando.js"
 import "/imports/ui/forms/formAlunoIngressante.js"
@@ -10,7 +10,7 @@ import '/imports/ui/forms/formAutoAvaliacao.js'
 import '/imports/ui/forms/formAvaliacaoInstituicao.js'
 import '/imports/collection/voucherCollection.js'
 import '/imports/ui/voucher/imprimirVoucher.js'
-import '/imports/ui/startup/client/captcha.js'
+import '/imports/startup/client/captcha.js'
 //MONGO_URL=mongodb://localhost:27017/projeto meteor run
 
 Template.formEnviar.onCreated(function(){
@@ -116,9 +116,20 @@ Template.validarForm.events({
     num=parseInt(num)
     var tmp=Voucher.findOne({numero:num});
     if(tmp!=null){
+
       if(tmp.validar==false){
-        Session.setPersistent('voucher',tmp);
-        Router.go('/formulario');
+        var re=$('#g-recaptcha-response').val();
+        console.log(re)
+        Meteor.call('captcha',re,function(e,r){
+          if(e){
+            console.log(e.reason)
+          }else{
+            console.log(r)
+            Session.setPersistent('voucher',tmp);
+            Router.go('/formulario');
+          }
+        });
+
       }else{
         alert('Voucher já utilizado')
       }
@@ -128,17 +139,19 @@ Template.validarForm.events({
   },
   'click #entrar':function(event){
     event.preventDefault();
+    console.log("entrar")
     email=$("#email").val();
     senha=$("#psw").val();
     Meteor.loginWithPassword(email,senha, function(e,r){
       if(e){
-        //console.log(e);
+        console.log(e);
+        aler("Usuário ou senha não conferem")
       }else{
-        //console.log(r);
+        console.log(r);
         console.log('teste')
         Router.go('/')
       }
     })
-    console.log("a")
+
   }
 })

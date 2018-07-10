@@ -31,6 +31,16 @@ Meteor.methods({
       }
     }
     return qtdeCadastrado;
+  },
+  'captcha':function(recaptcha){
+     var verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(this.connection.clientAddress, recaptcha);
+     if( verifyCaptchaResponse.data.success == false ){
+       //return false;
+       return verifyCaptchaResponse.data;
+      //throw new Meteor.Error(400, "Você precisar preencher o CAPTCHA");
+    }else{
+      //return true;
+    }
   }
 
 })
