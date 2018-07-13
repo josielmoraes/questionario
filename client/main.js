@@ -14,11 +14,14 @@ import '/imports/startup/client/captcha.js'
 //MONGO_URL=mongodb://localhost:27017/projeto meteor run
 
 Template.formEnviar.onCreated(function(){
-
+  if(Meteor.userId()){
+    $('body').removeClass('bg-dark')
+  }else{
+    $('body').addClass('bg-dark')
+  }
 })
 Template.formEnviar.helpers({
   tipoQuestionario(){
-    var tmp=Session.get('voucher');
     if(tmp.tipoAvaliacao==1){
       return true;
     }else{
@@ -41,6 +44,18 @@ Template.formEnviar.helpers({
       return false;
     }
   },
+  validarCondicao(){
+    var tmp=Session.get('voucher');
+    console.log(tmp)
+    if(tmp.validar==false){
+      return true;
+    }else{
+      return false;
+    }
+  },
+  routerGO(){
+    Router.go('/')
+  }
 
 })
 Template.formEnviar.events({
@@ -86,18 +101,40 @@ Template.formEnviar.events({
         array.push({pergunta:x, resposta:val})
       }
     }
-    console.log(array)
+    var tmp=Session.get('voucher');
+    console.log(tmp,array);
+    Meteor.call('cadastrarFormulario',tmp,array,function(e,r){
+      if(e){
+        alert(e)
+      }else{
+        alert("Formulario preenchido");
+        Router.go('/')
+      }
+    })
   },
 
 })
 Template.validarForm.onCreated(function(){
   var self=this;
+  if(Meteor.userId()){
+    $('body').removeClass('bg-dark')
+  }else{
+    $('body').addClass('bg-dark')
+  }
   Session.setPersistent('voucher',"");
   Meteor.subscribe("buscaCurso");
   self.autorun(function(){
     self.subscribe("buscaVoucher");
     self.subscribe("buscaCurso");
   })
+})
+Template.validarForm.onRendered(function(){
+  console.log('render')
+  if(Meteor.userId()){
+    $('body').removeClass('bg-dark')
+  }else{
+    $('body').addClass('bg-dark')
+  }
 })
 Template.validarForm.helpers({
   validar(currentUser){
@@ -106,6 +143,13 @@ Template.validarForm.helpers({
       return true;
     }else{
       return false;
+    }
+  },
+  bg(){
+    if(Meteor.userId()){
+      $('body').removeClass('bg-dark')
+    }else{
+      $('body').addClass('bg-dark')
     }
   }
 })
@@ -121,13 +165,13 @@ Template.validarForm.events({
         var re=$('#g-recaptcha-response').val();
         console.log(re)
         Meteor.call('captcha',re,function(e,r){
-          if(e){
-            console.log(e.reason)
-          }else{
+        //  if(e){
+          //  console.log(e.reason)
+        //  }else{
             console.log(r)
             Session.setPersistent('voucher',tmp);
             Router.go('/formulario');
-          }
+        //  }
         });
 
       }else{
@@ -137,6 +181,16 @@ Template.validarForm.events({
       alert('Voucher não cadastrado')
     }
   },
+
+})
+Template.login.onCreated(function(){
+  if(Meteor.userId()){
+    $('body').removeClass('bg-dark')
+  }else{
+    $('body').addClass('bg-dark')
+  }
+})
+Template.login.events({
   'click #entrar':function(event){
     event.preventDefault();
     console.log("entrar")
@@ -145,7 +199,7 @@ Template.validarForm.events({
     Meteor.loginWithPassword(email,senha, function(e,r){
       if(e){
         console.log(e);
-        aler("Usuário ou senha não conferem")
+        alert("Usuário ou senha não conferem")
       }else{
         console.log(r);
         console.log('teste')
@@ -153,5 +207,12 @@ Template.validarForm.events({
       }
     })
 
+  }
+})
+Template.menu.events({
+  'click #sair':function(event){
+    event.preventDefault();
+    Meteor.logout();
+    Router.go('/')
   }
 })

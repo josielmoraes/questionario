@@ -1,55 +1,123 @@
 
 
 <template name="formEnviar">
-  <form>
-    {{#if tipoQuestionario}}
-      {{> formDisciplina}}
-    {{else}}
-      {{> formAutoAvaliacao}}
-      {{> formAvaliacaoInstituicao}}
-      {{#if tipoAluno}}
-        {{#if tipoAluno2}}
-          {{> formAlunoIngressante}}
-        {{else}}
-          {{> formAlunoFormando}}
-        {{/if}}
-      {{/if}}
-    {{/if}}
-
-
-  </form>
+  {{#if validarCondicao}}
+    <div class="container col-sm-7">
+      <div class="card card-login mx-auto mt-5 ">
+        <div class="card-header">Formul&aacute;rio</div>
+          <div class="card-body">
+          <form>
+            <!--
+            {{#if tipoQuestionario}}
+              {{> formDisciplina}}
+            {{else}}
+              {{> formAutoAvaliacao}}
+              {{> formAvaliacaoInstituicao}}
+              {{#if tipoAluno}}
+                {{#if tipoAluno2}}
+                  {{> formAlunoIngressante}}
+                {{else}}
+                  {{> formAlunoFormando}}
+                {{/if}}
+              {{/if}}-->
+            
+              {{> formAlunoFormando}}
+            <div class="text-center">
+              <input type='submit' class='btn' id='enviar'>
+            </div>
+            <!--{{/if}}-->
+          </form>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    {{routerGO}}
+  {{/if}}
 </template>
 <template name="validarForm">
   <div class="container col-sm-10">
     {{#if validar currentUser}}
-    <div class="col-sm-7 mb-4">
-      <a href="{{pathFor route= 'voucher'}}">
-        <label>Gerar Voucher</label>
-      </a>
-      <a href="{{pathFor route= 'imprimirVoucher'}}">
-        <label>Imprimir Voucher</label>
-      </a>
-    </div>
+        {{>menu}}
     {{else}}
-    <form name="login" class="form-inline col-sm-8 mb-4">
-      <label class="control-label mr-sm-2" for="email">Email: </label>
-      <input type="text" id="email" class="form-control mr-sm-2 ">
-      <label class="control-label mr-sm-2">Senha: </label>
-      <input type="password" id="psw" class="form-control mr-sm-2">
-      <input type="submit" id="entrar" value="Entrar" class="btn ">
-    </form>
+    <div class="col-sm-5 text-center offset-sm-3">
+    <div class="card card-login mx-auto mt-5 ">
+      <div class="card-header">Voucher</div>
+        <div class="card-body">
+          <form name="validarForm" class="form-group">
+            <div class="form-group row mb-2 ml-1">
+              <label class="control-label ">Insira seu voucher:</label>
+              <input type="number" id="voucher" class="form-control col-sm-4 ml-1">
+            </div>
+            <div class="form-group mb-2">
+              <!--{{> reCAPTCHA}}-->
+            </div>
+            <input type="submit" id="validar" value="Enviar" class="btn mx-auto">
+            <div class="text-center">
+              <a class="d-block small" href="{{pathFor route= 'login'}}" >Entrar</a>
+            </div>
+          </form>
+        </div>
+    </div>
+  </div>
     {{/if}}
-    <div class="col-sm-7">
-      <form name="validarForm" class="form-group">
-        <div class="form-group row mb-2 ml-1">
-          <label class="control-label ">Insira seu voucher:</label>
-          <input type="number" id="voucher" class="form-control col-sm-4 ml-1">
+  </div>
+  {{bg}}
+</template>
+<template name="login">
+  <div class="container col-sm-10">
+    <div class="col-sm-5 offset-sm-3">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header">Login</div>
+        <div class="card-body">
+          <form name="login" class="">
+            <div class="form-group">
+              <label class="control-label mr-sm-2" for="email">Email: </label>
+              <input type="text" id="email" class="form-control mr-sm-2 ">
+            </div>
+            <div class="form-group">
+              <label class="control-label mr-sm-2">Senha: </label>
+              <input type="password" id="psw" class="form-control mr-sm-2">
+            </div>
+            <div class="text-center">
+              <input type="submit" id="entrar" value="Entrar" class="btn ">
+            </div>
+          </form>
+          <div class="text-center">
+            <a class="d-block small" href="{{pathFor route= 'home'}}" >Voltar para inicio</a>
+          </div>
         </div>
-        <div class="form-group mb-2">
-          {{> reCAPTCHA}}
-        </div>
-        <input type="submit" id="validar" value="Enviar" class="btn mx-auto">
-      </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name="menu">
+  <div class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <a class="navbar-brand" href="{{pathFor route= 'home'}}">Início</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
+          <a class="nav-link" href="{{pathFor route= 'voucher'}}">
+            <i class=""></i>
+            <span class="nav-link-text">Gerar Voucher</span>
+          </a>
+        </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="" data-original-title="Dashboard">
+          <a class="nav-link" href="{{pathFor route= 'imprimirVoucher'}}">
+            <i class=""></i>
+            <span class="nav-link-text">Imprimir Voucher</span>
+          </a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link"  id="sair">
+						<i class="fa fa-fw fa-sign-out"></i>Sair</a>
+					</li>
+				</ul>
     </div>
   </div>
 </template>

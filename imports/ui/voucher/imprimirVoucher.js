@@ -143,12 +143,34 @@ Template.tableVoucher.events({
     event.preventDefault();
     var num=Session.get('imprimirVoucher');
     var cont=$("#qtdeVoucher").val();
+    var tipo=Session.get('tipoAvaliacao');
+
+    var string=""
+    var curso=Session.get('cursoSelecionado');
+    if(curso!=""){
+      aux=Curso.findOne({_id:curso});
+      string=aux.nome+"\n";
+    }
+    if(tipo==1){
+      var dis=Session.get('disciplinaSelecionada')
+      string+="Avaliação da disciplina "+dis.Materia.nomeMateria+"\n";
+    }else if(tipo==2){
+      string+="AutoAvaliacao e Institucional "
+      var aluno=Session.get("tipoAluno");
+      if(aluno==1){
+        string+="para aluno ingressante";
+      }else if(aluno==2){
+        string+="para aluno formando";
+      }
+      string+='\n'
+    }
     if(cont>0){
       var dados=""
       for(x=0;x<cont;x++){
+        dados+=string;
         dados+="Código: ";
         dados+=num[x].numero;
-        dados+=" "
+        dados+="\n\n"
       }
       console.log(dados);
       var doc={
@@ -157,7 +179,7 @@ Template.tableVoucher.events({
         ]
       }
       console.log(doc)
-      pdfMake.createPdf(doc).download('optionalName.pdf');
+      pdfMake.createPdf(doc).download('Voucher.pdf');
     }else{
       alert("Selecione uma quantidade maior que zero")
     }

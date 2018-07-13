@@ -19,6 +19,13 @@ Template.formAlunoIngressante.helpers({
       return  curso.nome.toUpperCase();
     }
   },
+  nomeCurso2(){
+    var v=Session.get('voucher');
+    if(v!=null){
+      curso=Curso.findOne({_id:v.curso})
+      return  curso.nome;
+    }
+  },
   ano(){
     var inicio=1950;
     var final=2005;

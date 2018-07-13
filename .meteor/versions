@@ -1,3 +1,4 @@
+aalexandrakis:recaptcha@2.0.8
 accounts-base@1.4.2
 accounts-password@1.5.1
 accounts-ui@1.3.0
@@ -5,7 +6,6 @@ accounts-ui-unstyled@1.4.1
 alexwine:bootstrap-4@4.1.0
 allow-deny@1.1.0
 amplify@1.0.0
-appshore:recaptcha@2.1.0
 autoupdate@1.4.1
 babel-compiler@7.1.1
 babel-runtime@1.2.2

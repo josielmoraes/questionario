@@ -1,7 +1,8 @@
 <template name="voucher">
   <div class="container col-sm-10">
   {{#if validar currentUser}}
-  <form class="form-group">
+  {{>menu}}
+  <form class="form-group" style="margin-top: 75px;">
       <div class=" from-group row mb-2">
         <label for="processo" class="control-group col-sm-2">Semestre: </label>
         <select id="processo" class="form-control dropdown col-sm-2">

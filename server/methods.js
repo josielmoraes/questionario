@@ -36,11 +36,25 @@ Meteor.methods({
      var verifyCaptchaResponse = reCAPTCHA.verifyCaptcha(this.connection.clientAddress, recaptcha);
      if( verifyCaptchaResponse.data.success == false ){
        //return false;
-       return verifyCaptchaResponse.data;
+       //return verifyCaptchaResponse.data;
+
       //throw new Meteor.Error(400, "Você precisar preencher o CAPTCHA");
     }else{
       //return true;
     }
+    return true;
+  },
+  cadastrarFormulario(tmp,array){
+    console.log(tmp);
+
+    Formulario.insert({dados:array,formulario:tmp},function(e,r){
+      if(e){
+        return "Erro ao inserir";
+      }else{
+        Voucher.update({_id:tmp._id},{$set:{validar:true}})
+        return r
+      }
+    });
   }
 
 })

@@ -10,7 +10,12 @@ Router.route('/formulario',{
 })
 Router.route('/',{
   template:"validarForm",
+  name:"home"
 })
 Router.route('/imprimirVoucher',{
   template:"tableVoucher",
+})
+Router.route('/entrar',{
+  template:"login",
+  name:"login"
 })
