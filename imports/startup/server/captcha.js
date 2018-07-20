@@ -1,11 +1,11 @@
+
 import { Meteor } from 'meteor/meteor';
-if(Meteor.isServer){
+
 Meteor.startup(function() {
-  /*
+
     reCAPTCHA.config({
-        privatekey: '6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe'
+        privatekey: '6LfjemMUAAAAAG8fkpoZjFx3ClmeENRM5af43oue'
     });
     console.log("ReCaptcha: configurando servidor");;
-*/
+
 });
-}

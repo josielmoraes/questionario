@@ -11,7 +11,7 @@ import '/imports/ui/forms/formAvaliacaoInstituicao.js'
 import '/imports/collection/voucherCollection.js'
 import '/imports/ui/voucher/imprimirVoucher.js'
 import '/imports/startup/client/captcha.js'
-//MONGO_URL=mongodb://localhost:27017/projeto meteor run
+//MONGO_URL=mongodb://localhost:27017/projeto ROOT_URL="http://192.168.74.33:3000" meteor run
 
 Template.formEnviar.onCreated(function(){
   if(Meteor.userId()){
@@ -46,7 +46,6 @@ Template.formEnviar.helpers({
   },
   validarCondicao(){
     var tmp=Session.get('voucher');
-    console.log(tmp)
     if(tmp.validar==false){
       return true;
     }else{
@@ -73,7 +72,7 @@ Template.formEnviar.events({
           val=$(radio).val();
           if(val==null){
             $(id).focus();
-            //return;
+            return;
           }else{
             array.push({pergunta:x, resposta:val})
           }
@@ -81,7 +80,7 @@ Template.formEnviar.events({
           val=$(id).val();
           if(val==""){
             $(id).focus();
-            //return;
+            return;
           }else{
             array.push({pergunta:x, resposta:val})
           }
@@ -91,7 +90,7 @@ Template.formEnviar.events({
         val=$(id).val();
         if(val==""){
           $(id).focus();
-          //return;
+          return;
         }else{
           array.push({pergunta:x, resposta:val})
         }
@@ -102,7 +101,6 @@ Template.formEnviar.events({
       }
     }
     var tmp=Session.get('voucher');
-    console.log(tmp,array);
     Meteor.call('cadastrarFormulario',tmp,array,function(e,r){
       if(e){
         alert(e)
@@ -129,7 +127,7 @@ Template.validarForm.onCreated(function(){
   })
 })
 Template.validarForm.onRendered(function(){
-  console.log('render')
+
   if(Meteor.userId()){
     $('body').removeClass('bg-dark')
   }else{
@@ -138,7 +136,7 @@ Template.validarForm.onRendered(function(){
 })
 Template.validarForm.helpers({
   validar(currentUser){
-    console.log(currentUser)
+
     if(currentUser!=null){
       return true;
     }else{
@@ -151,6 +149,14 @@ Template.validarForm.helpers({
     }else{
       $('body').addClass('bg-dark')
     }
+  },
+  widthCel(){
+    var width = screen.width;
+    if(width<500){
+      return true;
+    }else{
+      return false
+    }
   }
 })
 Template.validarForm.events({
@@ -159,26 +165,29 @@ Template.validarForm.events({
     var num=$("#voucher").val();
     num=parseInt(num)
     var tmp=Voucher.findOne({numero:num});
+    console.log('voucher ',num, tmp)
     if(tmp!=null){
 
       if(tmp.validar==false){
         var re=$('#g-recaptcha-response').val();
-        console.log(re)
         Meteor.call('captcha',re,function(e,r){
-        //  if(e){
-          //  console.log(e.reason)
-        //  }else{
-            console.log(r)
+          if(e){
+            alert(e.reason);
+            grecaptcha.reset();
+          }else{
             Session.setPersistent('voucher',tmp);
             Router.go('/formulario');
-        //  }
+            grecaptcha.reset();
+          }
         });
 
       }else{
-        alert('Voucher já utilizado')
+        alert('Voucher já utilizado');
+        grecaptcha.reset();
       }
     }else{
-      alert('Voucher não cadastrado')
+      alert('Voucher não cadastrado');
+      grecaptcha.reset();
     }
   },
 
@@ -193,16 +202,12 @@ Template.login.onCreated(function(){
 Template.login.events({
   'click #entrar':function(event){
     event.preventDefault();
-    console.log("entrar")
     email=$("#email").val();
     senha=$("#psw").val();
     Meteor.loginWithPassword(email,senha, function(e,r){
       if(e){
-        console.log(e);
         alert("Usuário ou senha não conferem")
       }else{
-        console.log(r);
-        console.log('teste')
         Router.go('/')
       }
     })

@@ -7,7 +7,6 @@
         <div class="card-header">Formul&aacute;rio</div>
           <div class="card-body">
           <form>
-            <!--
             {{#if tipoQuestionario}}
               {{> formDisciplina}}
             {{else}}
@@ -19,14 +18,13 @@
                 {{else}}
                   {{> formAlunoFormando}}
                 {{/if}}
-              {{/if}}-->
-            
-              {{> formAlunoFormando}}
+              {{/if}}
             <div class="text-center">
               <input type='submit' class='btn' id='enviar'>
             </div>
-            <!--{{/if}}-->
+            {{/if}}
           </form>
+
         </div>
       </div>
     </div>
@@ -44,14 +42,20 @@
       <div class="card-header">Voucher</div>
         <div class="card-body">
           <form name="validarForm" class="form-group">
-            <div class="form-group row mb-2 ml-1">
+            <div class=" col-sm-12 row mb-2 ml-1 offset-sm-3 ">
               <label class="control-label ">Insira seu voucher:</label>
               <input type="number" id="voucher" class="form-control col-sm-4 ml-1">
             </div>
-            <div class="form-group mb-2">
-              <!--{{> reCAPTCHA}}-->
+            {{#if widthCel}}
+            <div class="form-group mb-2 text-center" style="transform:scale(0.8,0.8);-webkit-transform:scale(0.8,0.8);transform-origin:0 0;-webkit-transform-origin:0 0;" >
+              {{> reCAPTCHA}}
             </div>
-            <input type="submit" id="validar" value="Enviar" class="btn mx-auto">
+            {{else}}
+            <div class="col-sm-3 offset-sm-1"  >
+              {{> reCAPTCHA}}
+            </div>
+            {{/if}}
+            <input type="submit" id="validar" value="Enviar" class="btn mx-auto mb-1">
             <div class="text-center">
               <a class="d-block small" href="{{pathFor route= 'login'}}" >Entrar</a>
             </div>

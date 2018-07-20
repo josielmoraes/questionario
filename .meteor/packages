@@ -28,4 +28,5 @@ u2622:persistent-session
 accounts-ui
 accounts-password
 alexwine:bootstrap-4
-aalexandrakis:recaptcha
+appshore:recaptcha
+underscore

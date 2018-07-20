@@ -38,7 +38,7 @@ Meteor.methods({
        //return false;
        //return verifyCaptchaResponse.data;
 
-      //throw new Meteor.Error(400, "Você precisar preencher o CAPTCHA");
+      throw new Meteor.Error(400, "Você precisar preencher o CAPTCHA");
     }else{
       //return true;
     }
