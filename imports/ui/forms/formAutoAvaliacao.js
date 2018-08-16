@@ -1,10 +1,12 @@
 import './formAutoAvaliacao.html'
-import { Session } from 'meteor/session'
+import {
+  Session
+} from 'meteor/session'
 
-Template.formAutoAvaliacao.onCreated(function(){
-  var self=this;
+Template.formAutoAvaliacao.onCreated(function() {
+  var self = this;
   var curso;
-  self.autorun(function(){
+  self.autorun(function() {
     //self.subscribe("buscaProcesso");
     //self.subscribe("buscaSemestre");
     self.subscribe("buscaCurso");
@@ -12,20 +14,24 @@ Template.formAutoAvaliacao.onCreated(function(){
   })
 })
 Template.formAutoAvaliacao.helpers({
-  nomeCurso(){
-    var v=Session.get('voucher');
+  nomeCurso() {
+    var v = Session.get('voucher');
 
-    if(v!=null){
-      curso=Curso.findOne({_id:v.curso})
-      console.log(v,curso);
-      return  curso.nome.toUpperCase();
+    if (v != null) {
+      curso = Curso.findOne({
+        _id: v.curso
+      })
+      console.log(v, curso);
+      return curso.nome.toUpperCase();
     }
   },
-  nomeCurso2(){
-    var v=Session.get('voucher');
-    if(v!=null){
-      curso=Curso.findOne({_id:v.curso})
-      return  curso.nome;
+  nomeCurso2() {
+    var v = Session.get('voucher');
+    if (v != null) {
+      curso = Curso.findOne({
+        _id: v.curso
+      })
+      return curso.nome;
     }
   },
 })
