@@ -5,22 +5,22 @@
         <div class="card-header">Formul&aacute;rio</div>
           <div class="card-body">
           <form>
-            {{#if tipoQuestionario}}
+          <!--  {{#if tipoQuestionario}}-->
               {{> formDisciplina}}
-            {{else}}
+            <!--{{else}}-->
               {{> formAutoAvaliacao}}
               {{> formAvaliacaoInstituicao}}
-              {{#if tipoAluno}}
-                {{#if tipoAluno2}}
+            <!--  {{#if tipoAluno}}-->
+            <!--    {{#if tipoAluno2}}-->
                   {{> formAlunoIngressante}}
-                {{else}}
+            <!--    {{else}}-->
                   {{> formAlunoFormando}}
-                {{/if}}
-              {{/if}}
+            <!--    {{/if}}-->
+            <!--  {{/if}}-->
             <div class="text-center">
               <input type='submit' class='btn' id='enviar'>
             </div>
-            {{/if}}
+            <!--{{/if}}-->
           </form>
 
         </div>
@@ -32,36 +32,38 @@
 </template>
 
 <template name="validarForm">
-  <div class="container col-sm-10">
+  <div class="container ">
     {{#if validar currentUser}}
         {{>menu}}
     {{else}}
-    <div class="col-sm-5 text-center offset-sm-3">
-    <div class="card card-login mx-auto mt-5 ">
-      <div class="card-header">Voucher</div>
-        <div class="card-body">
-          <form name="validarForm" class="form-group">
-            <div class=" col-sm-12 row mb-2 ml-1 offset-sm-3 ">
-              <label class="control-label ">Insira seu voucher:</label>
-              <input type="number" id="voucher" class="form-control col-sm-4 ml-1">
-            </div>
-            {{#if widthCel}}
-            <div class="form-group mb-2 text-center" style="transform:scale(0.8,0.8);-webkit-transform:scale(0.8,0.8);transform-origin:0 0;-webkit-transform-origin:0 0;" >
-              {{> reCAPTCHA}}
-            </div>
-            {{else}}
-            <div class="col-sm-3 offset-sm-1"  >
-              {{> reCAPTCHA}}
-            </div>
-            {{/if}}
-            <input type="submit" id="validar" value="Enviar" class="btn mx-auto mb-1">
-            <div class="text-center">
-              <a class="d-block small" href="{{pathFor route= 'login'}}" >Entrar</a>
-            </div>
-          </form>
-        </div>
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6 col-md-10 text-center">
+      <div class="card card-login mx-auto mt-5 ">
+        <div class="card-header">Voucher</div>
+          <div class="card-body">
+            <form name="validarForm" class="form-group">
+              <div class=" row ">
+                <label class="control-label col-5">Insira seu voucher:</label>
+                <input type="number" id="voucher" class="form-control col-5 ">
+              </div>
+              {{#if widthCel}}
+              <div class="col-12 mt-3" style="transform:scale(0.8,0.8);-webkit-transform:scale(0.8,0.8);transform-origin:0 0;-webkit-transform-origin:0 0;" >
+                {{> reCAPTCHA}}
+              </div>
+              {{else}}
+              <div class="col-12 mt-3"  >
+                {{> reCAPTCHA}}
+              </div>
+              {{/if}}
+              <input type="submit" id="validar" value="Enviar" class="btn mx-auto mt-3 mb-1">
+              <div class="text-center">
+                <a class="d-block small" href="{{pathFor route= 'login'}}" >Entrar</a>
+              </div>
+            </form>
+          </div>
+      </div>
     </div>
-  </div>
+    </div>
     {{/if}}
   </div>
   {{bg}}

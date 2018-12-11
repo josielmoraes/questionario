@@ -105,7 +105,7 @@ Template.tableVoucher.helpers({
     }
   },
   routerGO(){
-    Router.go('/')
+    Router.go('home')
   }
 
 })

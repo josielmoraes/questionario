@@ -36,37 +36,43 @@ Template.formEnviar.helpers({
   },
   tipoAluno() {
     var tmp = Session.get('voucher');
+    if(tmp!=null){
     if (tmp.tipoAluno == 1 || tmp.tipoAluno == 2) {
       return true;
     } else {
       return false;
     }
+  }
   },
   tipoAluno2() {
     var tmp = Session.get('voucher');
+    if(tmp!=null){
     if (tmp.tipoAluno == 1) {
       return true;
     } else {
       return false;
     }
+  }
   },
   validarCondicao() {
     var tmp = Session.get('voucher');
+    if(tmp!=null){
     if (tmp.validar == false) {
       return true;
     } else {
       return false;
     }
+    }
   },
   routerGO() {
-    Router.go('/')
+    Router.go('home')
   }
 
 })
 Template.formEnviar.events({
   'click #enviar': function(event) {
     event.preventDefault();
-    var t = 94;
+    var t = 97;
     var array = [];
     for (x = 1; x <= t; x++) {
       id = "[name=pergunta" + x + "]";
@@ -85,6 +91,20 @@ Template.formEnviar.events({
               resposta: val
             })
           }
+        }else if  (type == "checkbox") {
+            let input = "input[name=pergunta" + x + "]:checked";
+            let vect=[]
+            $('.pergunta'+x).each(function(index){
+              if($(this).is(':checked')){
+                vect.push($( this ).val())
+              }
+            })
+            if(vect.length>0){
+              array.push({
+                pergunta: x,
+                resposta: vect})
+              }
+
         } else if (type == "text") {
           val = $(id).val();
           if (val == "") {
@@ -101,8 +121,7 @@ Template.formEnviar.events({
         a = $(id).attr("id");
         val = $(id).val();
         if (val == "") {
-          $(id).focus();
-          return;
+
         } else {
           array.push({
             pergunta: x,
@@ -118,13 +137,14 @@ Template.formEnviar.events({
         })
       }
     }
+    console.log(array);
     var tmp = Session.get('voucher');
     Meteor.call('cadastrarFormulario', tmp, array, function(e, r) {
       if (e) {
         alert(e)
       } else {
         alert("Formulario preenchido");
-        Router.go('/')
+        Router.go('home')
       }
     })
   },
@@ -137,7 +157,7 @@ Template.validarForm.onCreated(function() {
   } else {
     $('body').addClass('bg-dark')
   }
-  Session.setPersistent('voucher', "");
+  Session.set('voucher', "");
   Meteor.subscribe("buscaCurso");
   self.autorun(function() {
     self.subscribe("buscaVoucher");
@@ -185,7 +205,7 @@ Template.validarForm.events({
     var tmp = Voucher.findOne({
       numero: num
     });
-    console.log('voucher ', num, tmp)
+    //console.log('voucher ', num, tmp)
     if (tmp != null) {
 
       if (tmp.validar == false) {
@@ -195,8 +215,8 @@ Template.validarForm.events({
             alert(e.reason);
             grecaptcha.reset();
           } else {
-            Session.setPersistent('voucher', tmp);
-            Router.go('/formulario');
+            Session.set('voucher', tmp);
+            Router.go('formEnviar');
             grecaptcha.reset();
           }
         });
@@ -228,7 +248,7 @@ Template.login.events({
       if (e) {
         alert("Usuário ou senha não conferem")
       } else {
-        Router.go('/')
+        Router.go('home')
       }
     })
 
@@ -238,6 +258,6 @@ Template.menu.events({
   'click #sair': function(event) {
     event.preventDefault();
     Meteor.logout();
-    Router.go('/')
+    Router.go('home')
   }
 })

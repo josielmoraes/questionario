@@ -4,7 +4,7 @@
   {{>menu}}
   <form class="form-group" style="margin-top: 75px;">
     <div class="form-group row ">
-      <label for="processo" class="control-group col-sm-2">Semestre</label>
+      <label for="processo" class="control-group col-sm-2">Semestre:</label>
       <select id="processo" class="form-control dropdown col-sm-2">
         <option id=""></option>
         {{#each val in buscaProcesso}}
@@ -14,7 +14,7 @@
     </div>
     {{#if semestreSelecionado}}
       <div class="form-group row">
-        <label for="curso" class="control-group col-sm-2">Curso</label>
+        <label for="curso" class="control-group col-sm-2">Curso:</label>
         <select id="curso" class="form-control dropdown col-sm-4">
           <option id=""></option>
           {{#each val in buscaCurso}}

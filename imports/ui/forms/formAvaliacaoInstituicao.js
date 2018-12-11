@@ -3,20 +3,17 @@ Template.formAvaliacaoInstituicao.onCreated(function() {
   var self = this;
   var curso;
   self.autorun(function() {
-    //self.subscribe("buscaProcesso");
-    //self.subscribe("buscaSemestre");
-    //subscribe("buscaCurso");
-    //self.subscribe("buscaVoucher");
+    self.subscribe("buscaProcesso");
+    self.subscribe("buscaSemestre");
+    self.subscribe("buscaCurso");
+    self.subscribe("buscaVoucher");
   })
 })
 Template.formAvaliacaoInstituicao.helpers({
   nomeCurso() {
     var v = Session.get('voucher');
-    if (v != null) {
-      curso = Curso.findOne({
-        _id: v.curso
-      })
-      return curso.nome.toUpperCase();
+    if (v.disciplina.Curso != null) {
+      return  v.disciplina.Curso.nome.toUpperCase();
     }
   },
 

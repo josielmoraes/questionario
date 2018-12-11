@@ -96,7 +96,7 @@ Template.voucher.helpers({
     }
   },
   routerGO(){
-    Router.go('/')
+    Router.go('home')
   }
 })
 Template.voucher.events({

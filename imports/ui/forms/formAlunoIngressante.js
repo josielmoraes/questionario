@@ -4,30 +4,26 @@ Template.formAlunoIngressante.onCreated(function() {
   var self = this;
   var curso;
   self.autorun(function() {
-    //self.subscribe("buscaProcesso");
-    //self.subscribe("buscaSemestre");
-    //self.subscribe("buscaCurso");
-    //self.subscribe("buscaVoucher");
+    self.subscribe("buscaProcesso");
+    self.subscribe("buscaSemestre");
+    self.subscribe("buscaCurso");
+    self.subscribe("buscaVoucher");
   })
 
 })
 Template.formAlunoIngressante.helpers({
   nomeCurso() {
     var v = Session.get('voucher');
-    if (v != null) {
-      curso = Curso.findOne({
-        _id: v.curso
-      })
-      return curso.nome.toUpperCase();
+    if (v.disciplina.Curso != null) {
+
+      return v.disciplina.Curso.nome.toUpperCase();
     }
   },
   nomeCurso2() {
     var v = Session.get('voucher');
-    if (v != null) {
-      curso = Curso.findOne({
-        _id: v.curso
-      })
-      return curso.nome;
+    if (v.disciplina.Curso != null) {
+
+      return v.disciplina.Curso.nome;
     }
   },
   ano() {
@@ -53,14 +49,14 @@ Template.formAlunoIngressante.helpers({
 })
 
 Template.formAlunoIngressante.events({
-  'change .pergunta76': function(event) {
+  'change .pergunta77': function(event) {
     event.preventDefault();
-    radio = "input[name=pergunta76]:checked";
+  /*  radio = "input[name=pergunta77]:checked";
     if (val == 2) {
       console.log("entrou");
-      $("#pergunta76").attr("disabled", false);
+      $("#pergunta78").attr("disabled", false);
     } else {
-      $("#pergunta76").attr("disabled", true);
-    }
+      $("#pergunta78").attr("disabled", true);
+    }*/
   },
 })
