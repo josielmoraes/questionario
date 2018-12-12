@@ -5,22 +5,22 @@
         <div class="card-header">Formul&aacute;rio</div>
           <div class="card-body">
           <form>
-          <!--  {{#if tipoQuestionario}}-->
+          {{#if tipoQuestionario}}
               {{> formDisciplina}}
-            <!--{{else}}-->
-              {{> formAutoAvaliacao}}
-              {{> formAvaliacaoInstituicao}}
-            <!--  {{#if tipoAluno}}-->
-            <!--    {{#if tipoAluno2}}-->
+            {{else}}
+             {{> formAutoAvaliacao}}
+             {{> formAvaliacaoInstituicao}}
+              {{#if tipoAluno}}
+                {{#if tipoAluno2}}
                   {{> formAlunoIngressante}}
-            <!--    {{else}}-->
+                {{else}}
                   {{> formAlunoFormando}}
-            <!--    {{/if}}-->
-            <!--  {{/if}}-->
+                {{/if}}
+             {{/if}}
             <div class="text-center">
               <input type='submit' class='btn' id='enviar'>
             </div>
-            <!--{{/if}}-->
+            {{/if}}
           </form>
 
         </div>

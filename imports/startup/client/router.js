@@ -17,6 +17,7 @@ Router.route(prefix+'/', {
 })
 Router.route(prefix+'/imprimirVoucher', {
   template: "tableVoucher",
+  name:'imprimirVoucher'
 })
 Router.route(prefix+'/entrar', {
   template: "login",

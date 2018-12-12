@@ -1,4 +1,5 @@
 import './formAvaliacaoInstituicao.html'
+import '/imports/collection/curso.js'
 Template.formAvaliacaoInstituicao.onCreated(function() {
   var self = this;
   var curso;
@@ -12,8 +13,9 @@ Template.formAvaliacaoInstituicao.onCreated(function() {
 Template.formAvaliacaoInstituicao.helpers({
   nomeCurso() {
     var v = Session.get('voucher');
-    if (v.disciplina.Curso != null) {
-      return  v.disciplina.Curso.nome.toUpperCase();
+    if (v != null) {
+      var t= Curso.findOne({_id:v.curso});
+      return t.nome.toUpperCase();
     }
   },
 

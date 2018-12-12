@@ -172,13 +172,13 @@ Template.tableVoucher.events({
         dados+=num[x].numero;
         dados+="\n\n"
       }
-      console.log(dados);
+      //console.log(dados);
       var doc={
         content:[
           dados
         ]
       }
-      console.log(doc)
+      //console.log(doc)
       pdfMake.createPdf(doc).download('Voucher.pdf');
     }else{
       alert("Selecione uma quantidade maior que zero")

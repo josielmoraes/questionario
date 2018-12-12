@@ -23,6 +23,7 @@ Meteor.methods({
             tipoAluno: tipoAluno,
             tipoAvaliacao: tipoAvaliacao,
             disciplina: disciplina,
+            dados:"",
             validar: false
           })
           qtdeCadastrado++;
@@ -47,27 +48,36 @@ Meteor.methods({
     }
     return true;
   },
-  cadastrarFormulario(tmp, array) {
-    console.log(tmp);
-
-    Formulario.insert({
-      dados: array,
-      formulario: tmp
-    }, function(e, r) {
-      if (e) {
-        return "Erro ao inserir";
-      } else {
+  cadastrarRespostas(tmp, array) {
         Voucher.update({
           _id: tmp._id
         }, {
           $set: {
-            validar: true
+            validar: true,
+            dados:array
+          }
+        },function(e,r){
+          if(e){
+            return "Erro ao inserir"
+          }else{
+            r
           }
         })
-        return r
+    },
+    cadastrarLegendas(array){
+      for(x in array){
+        var tmp=Legenda.findOne({id:array[x].id})
+        console.log(tmp);
+        if(tmp==null){
+          console.log("cadastrar", array[x]);
+          Legenda.insert({
+            id:array[x].id,
+            pergunta:array[x].pergunta,
+            respota:array[x].resposta,
+          })
+        }
       }
-    });
-  }
+    }
 
 })
 

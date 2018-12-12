@@ -1,8 +1,10 @@
 import './formAlunoIngressante.html'
-
+import '/imports/collection/curso.js'
 Template.formAlunoIngressante.onCreated(function() {
   var self = this;
   var curso;
+
+
   self.autorun(function() {
     self.subscribe("buscaProcesso");
     self.subscribe("buscaSemestre");
@@ -14,16 +16,16 @@ Template.formAlunoIngressante.onCreated(function() {
 Template.formAlunoIngressante.helpers({
   nomeCurso() {
     var v = Session.get('voucher');
-    if (v.disciplina.Curso != null) {
-
-      return v.disciplina.Curso.nome.toUpperCase();
+    if (v!= null) {
+      var t= Curso.findOne({_id:v.curso});
+      return t.nome.toUpperCase();
     }
   },
   nomeCurso2() {
     var v = Session.get('voucher');
-    if (v.disciplina.Curso != null) {
-
-      return v.disciplina.Curso.nome;
+    if (v!= null) {
+      var t= Curso.findOne({_id:v.curso});
+      return t.nome;
     }
   },
   ano() {
@@ -49,14 +51,15 @@ Template.formAlunoIngressante.helpers({
 })
 
 Template.formAlunoIngressante.events({
-  'change .pergunta77': function(event) {
+  'change .pergunta79': function(event) {
     event.preventDefault();
-  /*  radio = "input[name=pergunta77]:checked";
-    if (val == 2) {
+    radio = "input[name=pergunta79]:checked";
+    val=$(radio).val();
+    if (val == 1) {
       console.log("entrou");
-      $("#pergunta78").attr("disabled", false);
+      $("#pergunta80").attr("disabled", false);
     } else {
-      $("#pergunta78").attr("disabled", true);
-    }*/
+      $("#pergunta80").attr("disabled", true);
+    }
   },
 })

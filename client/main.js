@@ -28,6 +28,7 @@ Template.formEnviar.onCreated(function() {
 })
 Template.formEnviar.helpers({
   tipoQuestionario() {
+    var tmp = Session.get('voucher');
     if (tmp.tipoAvaliacao == 1) {
       return true;
     } else {
@@ -72,7 +73,7 @@ Template.formEnviar.helpers({
 Template.formEnviar.events({
   'click #enviar': function(event) {
     event.preventDefault();
-    var t = 97;
+    var t = 98;
     var array = [];
     for (x = 1; x <= t; x++) {
       id = "[name=pergunta" + x + "]";
@@ -86,6 +87,7 @@ Template.formEnviar.events({
             $(id).focus();
             return;
           } else {
+
             array.push({
               pergunta: x,
               resposta: val
@@ -100,6 +102,7 @@ Template.formEnviar.events({
               }
             })
             if(vect.length>0){
+
               array.push({
                 pergunta: x,
                 resposta: vect})
@@ -108,8 +111,10 @@ Template.formEnviar.events({
         } else if (type == "text") {
           val = $(id).val();
           if (val == "") {
+            if($(id).attr("disabled")!="disabled"){
             $(id).focus();
             return;
+            }
           } else {
             array.push({
               pergunta: x,
@@ -121,7 +126,8 @@ Template.formEnviar.events({
         a = $(id).attr("id");
         val = $(id).val();
         if (val == "") {
-
+          $(id).focus();
+          return;
         } else {
           array.push({
             pergunta: x,
@@ -137,9 +143,8 @@ Template.formEnviar.events({
         })
       }
     }
-    console.log(array);
     var tmp = Session.get('voucher');
-    Meteor.call('cadastrarFormulario', tmp, array, function(e, r) {
+    Meteor.call('cadastrarRespostas', tmp, array, function(e, r) {
       if (e) {
         alert(e)
       } else {

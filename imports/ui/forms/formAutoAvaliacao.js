@@ -1,4 +1,5 @@
 import './formAutoAvaliacao.html'
+import '/imports/collection/curso.js'
 import {
   Session
 } from 'meteor/session'
@@ -17,13 +18,16 @@ Template.formAutoAvaliacao.helpers({
   nomeCurso() {
     var v = Session.get('voucher');
     if (v != null) {
-      return v.disciplina.Curso.nome.toUpperCase();
+      var t= Curso.findOne({_id:v.curso});
+      return t.nome.toUpperCase();
+      //return v.disciplina.Curso.nome.toUpperCase();
     }
   },
   nomeCurso2() {
     var v = Session.get('voucher');
     if (v != null) {
-      return v.disciplina.Curso.nome;
+      var t= Curso.findOne({_id:v.curso});
+      return t.nome
     }
   },
 })

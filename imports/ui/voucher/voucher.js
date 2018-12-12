@@ -84,7 +84,7 @@ Template.voucher.helpers({
     }
   },
   validar(currentUser){
-    console.log(currentUser);
+    //console.log(currentUser);
     if(currentUser!=null){
       if(currentUser.profile.permission==0){
         return true;
@@ -132,13 +132,13 @@ Template.voucher.events({
   },
   'change .aluno':function(event){
     event.preventDefault();
-    console.log("tipo aluno",event.target.value);
+
     Session.set('tipoAluno',event.target.value);
   },
 
   'click #gerar':function(event){
     event.preventDefault();
-    console.log("aaa");
+
     qtde=$("#qtdeVoucher").val();
     var processo=Session.get('processoSelecionado');
     var tipoAvaliacao=Session.get('tipoAvaliacao');
@@ -167,7 +167,7 @@ Template.voucher.events({
 })
 Template.discplinaAuto.helpers({
   validarCurso(val){
-    console.log(val);
+
     var curso=Session.get('cursoSelecionado');
 
     if(val.Curso!=""){
@@ -189,7 +189,7 @@ Template.disciplinaBusca.onCreated(function(){
 })
 Template.disciplinaBusca.helpers({
   settingsDisciplina: function() {
-    //console.log(Meteor.users)
+
     return {
       position: Session.get("position"),
       limit: 10,
@@ -207,7 +207,6 @@ Template.disciplinaBusca.helpers({
   },
   'inserirRe':function(){
     setTimeout(function() {
-      console.log('teste')
       $('#disciplinaId').attr("required", true);
     },100);
   }
@@ -216,7 +215,6 @@ Template.disciplinaBusca.helpers({
 Template.disciplinaBusca.events({
   'autocompleteselect #disciplinaId':function(event,template,doc){
     event.preventDefault();
-    //console.log(doc)
     Session.set('disciplinaSelecionada',doc);
   }
 })

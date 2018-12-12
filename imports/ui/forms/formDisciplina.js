@@ -14,14 +14,16 @@ Template.formDisciplina.onCreated(function() {
 Template.formDisciplina.helpers({
   nomeCurso() {
       var v = Session.get('voucher');
-      if (v.disciplina.Curso != null) {
-        return v.disciplina.Curso.nome.toUpperCase();
+      if (v!= null) {
+        var t= Curso.findOne({_id:v.curso});
+        return t.nome.toUpperCase();
       }
   },
   nomeDisciplina() {
       var v = Session.get('voucher');
-      if (v.disciplina.Curso != "") {
-        return v.disciplina.Materia.nomeMateria;
+      if (v != "") {
+        var t= Curso.findOne({_id:v.curso});
+        return t.nome
       }
   },
   codigoMateria() {
