@@ -1,7 +1,6 @@
 import './imprimirVoucher.html';
 
-const png = require('../../../node_modules/save-svg-as-png/lib/saveSvgAsPng.js')
-var pdf = new jsPDF();
+
 
 function convertToPdf(svgArray, callback) {
 
