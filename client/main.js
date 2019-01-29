@@ -21,9 +21,9 @@ import '/imports/startup/client/captcha.js'
 
 Template.formEnviar.onCreated(function() {
   if (Meteor.userId()) {
-    $('body').removeClass('bg-dark')
+    $('body').removeClass('bg-blue')
   } else {
-    $('body').addClass('bg-dark')
+    $('body').addClass('bg-blue')
   }
 })
 Template.formEnviar.helpers({
@@ -158,9 +158,9 @@ Template.formEnviar.events({
 Template.validarForm.onCreated(function() {
   var self = this;
   if (Meteor.userId()) {
-    $('body').removeClass('bg-dark')
+    $('body').removeClass('bg-blue')
   } else {
-    $('body').addClass('bg-dark')
+    $('body').addClass('bg-blue')
   }
   Session.set('voucher', "");
   Meteor.subscribe("buscaCurso");
@@ -172,9 +172,9 @@ Template.validarForm.onCreated(function() {
 Template.validarForm.onRendered(function() {
 
   if (Meteor.userId()) {
-    $('body').removeClass('bg-dark')
+    $('body').removeClass('bg-blue')
   } else {
-    $('body').addClass('bg-dark')
+    $('body').addClass('bg-blue')
   }
 })
 Template.validarForm.helpers({
@@ -188,9 +188,9 @@ Template.validarForm.helpers({
   },
   bg() {
     if (Meteor.userId()) {
-      $('body').removeClass('bg-dark')
+      $('body').removeClass('bg-blue')
     } else {
-      $('body').addClass('bg-dark')
+      $('body').addClass('bg-blue')
     }
   },
   widthCel() {
@@ -239,9 +239,9 @@ Template.validarForm.events({
 })
 Template.login.onCreated(function() {
   if (Meteor.userId()) {
-    $('body').removeClass('bg-dark')
+    $('body').removeClass('bg-blue')
   } else {
-    $('body').addClass('bg-dark')
+    $('body').addClass('bg-blue')
   }
 })
 Template.login.events({

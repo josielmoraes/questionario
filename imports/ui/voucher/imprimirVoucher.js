@@ -242,7 +242,7 @@ Template.tableVoucher.events({
             contador++;
           }
         }
-        doc.save("pdf.pdf")
+        doc.save("voucher.pdf")
       })
     } else {
       alert("Selecione uma quantidade maior que zero")
