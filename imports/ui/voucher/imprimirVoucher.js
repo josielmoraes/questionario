@@ -177,10 +177,26 @@ Template.tableVoucher.events({
     var tipo = Session.get('tipoAvaliacao');
     var curso = Session.get('cursoSelecionado');
     var cursoNome;
+    var disciplina="";
+    var aluno=""
    if(curso!=""){
      cursoNome=Curso.findOne({_id:curso});
 
    }
+   if(tipo==1){
+      var dis=Session.get('disciplinaSelecionada')
+      disciplina=dis.Materia.nomeMateria;
+    }else if(tipo==2){
+
+      var alunotmp=Session.get("tipoAluno");
+      if(alunotmp==1){
+        aluno="Calouro";
+      }else if(alunotmp==2){
+        aluno="Formando";
+      }else if (alunotmp==3){
+        aluno="Normal";
+      }
+    }
     if (cont > 0) {
       var svgArray = []
       for (x = 0; x < cont; x++) {
@@ -199,6 +215,11 @@ Template.tableVoucher.events({
             $("#tspan1246").text(svgArray[x])
             if(cursoNome="Engenharia de Computação"){
               $("#rect1328").attr("style","fill:#FF041D")
+            }
+            if(aluno!=""){
+                $("#tspan1246-6").text(aluno)
+            }else if(disciplina!=""){
+                $("#tspan1246-6").text(disciplina)
             }
 
             var svgData = new XMLSerializer().serializeToString(svg);
