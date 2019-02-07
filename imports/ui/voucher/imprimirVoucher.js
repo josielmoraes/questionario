@@ -1,5 +1,7 @@
 import './imprimirVoucher.html';
 
+import svg2pdf from '/node_modules/svg2pdf.js/dist/svg2pdf.min.js';
+import jsPDF from '/node_modules/jspdf-yworks/dist/jspdf.min.js';
 
 
 function convertToPdf(svgArray, callback) {
@@ -177,67 +179,118 @@ Template.tableVoucher.events({
     var tipo = Session.get('tipoAvaliacao');
     var curso = Session.get('cursoSelecionado');
     var cursoNome;
-    var disciplina="";
-    var aluno=""
-   if(curso!=""){
-     cursoNome=Curso.findOne({_id:curso});
+    var disciplina = "";
+    var aluno = ""
+    if (curso != "") {
+      cursoNome = Curso.findOne({
+        _id: curso
+      });
 
-   }
-   if(tipo==1){
-      var dis=Session.get('disciplinaSelecionada')
-      disciplina=dis.Materia.nomeMateria;
-    }else if(tipo==2){
+    }
+    if (tipo == 1) {
+      var dis = Session.get('disciplinaSelecionada')
+      disciplina = dis.Materia.nomeMateria;
+    } else if (tipo == 2) {
 
-      var alunotmp=Session.get("tipoAluno");
-      if(alunotmp==1){
-        aluno="Calouro";
-      }else if(alunotmp==2){
-        aluno="Formando";
-      }else if (alunotmp==3){
-        aluno="Normal";
+      var alunotmp = Session.get("tipoAluno");
+      if (alunotmp == 1) {
+        aluno = "Calouro";
+      } else if (alunotmp == 2) {
+        aluno = "Formando";
+      } else if (alunotmp == 3) {
+        aluno = "Normal";
       }
     }
     if (cont > 0) {
+      var width = 340,
+        height = 189;
+      var i = 0,
+        j = 0,
+        pdf = new jsPDF('p', 'pt');
+      var svgElement = document.querySelector("svg");
+
       var svgArray = []
       for (x = 0; x < cont; x++) {
         svgArray.push(num[x].numero)
       }
       var promises = []
+      var count=0;
       for (x = 0; x < svgArray.length; x++) {
+        $("#tspan1246").text(svgArray[x])
 
 
-        promises.push(new Promise(
-          function(resolve, reject) {
-            var svg = document.querySelector("svg");
-            var bBox = svg.getBBox();
-            var w = 340, //bBox.width*10,
-              h = 189 //bBox.height*10
-            $("#tspan1246").text(svgArray[x])
-            if(cursoNome="Engenharia de Computação"){
-              $("#rect1328").attr("style","fill:#FF041D")
-            }
-            if(aluno!=""){
-                $("#tspan1246-6").text(aluno)
-            }else if(disciplina!=""){
-                $("#tspan1246-6").text(disciplina)
-            }
+        //document.getElementById('tspan1246').style.fontSize = "20px";
+        if (cursoNome = "Engenharia de Computação") {
+          $("#rect1328").attr("style", "fill:#FF041D")
+        }
+        if (aluno != "") {
+          $("#tspan1246-6").text(aluno)
+        //  document.getElementById('tspan1246-6').style.fontSize = "20px";
+        } else if (disciplina != "") {
+          $("#tspan1246-6").text(disciplina)
+        //  document.getElementById('tspan1246-6').style.fontSize = "20px";
+        }
+        if (x % 2 == 0) {
+          svg2pdf(svgElement, pdf, {
+            xOffset: i,
+            yOffset: j,
+            scale: 26
+          });
+          i += 260;
+        } else {
+          svg2pdf(svgElement, pdf, {
+            xOffset: i,
+            yOffset: j,
+            scale: 26
+          });
+          j += 135;
+          i = 0;
+        }
+        count++;
+        if(count==12){
+          count=0;
+          pdf.addPage();
+          i=0;
+          j=0;
+        }
+          const uri = pdf.output('datauristring');
 
-            var svgData = new XMLSerializer().serializeToString(svg);
-            var canvas = document.createElement("canvas");
-            var ctx = canvas.getContext("2d");
-            canvas.width = w;
-            canvas.height = h
-            var img = document.createElement("img");
-            img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData))));
-            img.onload = function() {
-              ctx.drawImage(img, 0, 0, w, h);
-              var canvasdata = canvas.toDataURL("image/png", 1);
-              resolve(canvasdata)
+
+        /*  promises.push(new Promise(
+            function(resolve, reject) {
+              var svg = document.querySelector("svg");
+              var bBox = svg.getBBox();
+              var w = 340, //bBox.width*10,
+                h = 189 //bBox.height*10
+              $("#tspan1246").text(svgArray[x])
+              if(cursoNome="Engenharia de Computação"){
+                $("#rect1328").attr("style","fill:#FF041D")
+              }
+              if(aluno!=""){
+                  $("#tspan1246-6").text(aluno)
+              }else if(disciplina!=""){
+                  $("#tspan1246-6").text(disciplina)
+              }
+
+              var svgData = new XMLSerializer().serializeToString(svg);
+              var canvas = document.createElement("canvas");
+              var ctx = canvas.getContext("2d");
+              canvas.width = w;
+              canvas.height = h
+              var img = document.createElement("img");
+              img.setAttribute("src", "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(svgData))));
+              img.onload = function() {
+                ctx.drawImage(img, 0, 0, w, h);
+                var canvasdata = canvas.toDataURL("image/png", 1);
+                resolve(canvasdata)
+              }
             }
-          }
-        ))
+          ))*/
       }
-      Promise.all(promises).then(function(values) {
+      const uri = pdf.output('datauristring');
+      pdf.save('vouchers.pdf');
+
+      /*Promise.all(promises).then(function(values) {
         var doc = new jsPDF('portrait', 'pt');
         pageHeight = doc.internal.pageSize.height;
         var i = 0,
@@ -264,7 +317,7 @@ Template.tableVoucher.events({
           }
         }
         doc.save("voucher.pdf")
-      })
+      })*/
     } else {
       alert("Selecione uma quantidade maior que zero")
     }
