@@ -20,11 +20,10 @@ Template.formDisciplina.helpers({
       }
   },
   nomeDisciplina() {
-      var v = Session.get('voucher');
-      if (v != "") {
-        var t= Curso.findOne({_id:v.curso});
-        return t.nome
-      }
+    var v = Session.get('voucher');
+    if (v.disciplina != "") {
+      return v.disciplina.Materia.nomeMateria;
+    }
   },
   codigoMateria() {
       var v = Session.get('voucher');
